@@ -1,10 +1,14 @@
 package com.work.jsy.jiaobao2.selfdefinedView;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -16,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.work.jsy.jiaobao2.R;
 
 
@@ -86,6 +91,8 @@ public class SlideShowView extends FrameLayout {
         super(context, attrs, defStyle);
         this.context = context;
 
+        ImageLoaderConfiguration imageLoaderConfiguration=ImageLoaderConfiguration.createDefault(context);
+        imageLoader.init(imageLoaderConfiguration);
         imageLoader = ImageLoader.getInstance();
 //		 imageLoader.setErrorImage(R.drawable.default_page);
     }
@@ -367,5 +374,6 @@ public class SlideShowView extends FrameLayout {
     public static interface SlideShowItemClick {
         public void onImageClick(int postion, View imageView);
     }
+
 
 }

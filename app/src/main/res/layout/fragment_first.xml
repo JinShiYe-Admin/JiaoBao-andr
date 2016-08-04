@@ -3,7 +3,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <com.work.jsy.plan.selfdefinedView.SlideShowView
+    <com.work.jsy.jiaobao2.selfdefinedView.SlideShowView
         android:id="@+id/slideShow_firstFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -13,6 +13,4 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"/>
-
-
 </LinearLayout>

@@ -1,26 +1,35 @@
 package com.work.jsy.jiaobao2;
 
 import android.os.Bundle;
-
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.work.jsy.jiaobao2.adapters.MainViewPagertAdapter;
+import com.work.jsy.jiaobao2.fragments.FifthFragment;
+import com.work.jsy.jiaobao2.fragments.FirstFragment;
+import com.work.jsy.jiaobao2.fragments.ForthFragment;
+import com.work.jsy.jiaobao2.fragments.SecondFragment;
+import com.work.jsy.jiaobao2.fragments.ThirdFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private TextView tv_first,tv_sec,tv_third,tv_fourth,tv_fifth;
+    private ViewPager mViewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        initViews();
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -96,5 +105,29 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    /**
+     * initViews
+     */
+    private void initViews(){
+        tv_first=(TextView)findViewById(R.id.first);
+        tv_sec=(TextView)findViewById(R.id.second);
+        tv_third=(TextView)findViewById(R.id.third);
+        tv_fourth=(TextView)findViewById(R.id.fourth);
+        tv_fifth=(TextView)findViewById(R.id.fifth);
+        mViewPager=(ViewPager)findViewById(R.id.fragment_main);
+        addFragments(mViewPager);
+    }
+    /**
+     * addFragments
+     */
+    private void addFragments(ViewPager viewPager){
+        MainViewPagertAdapter adapter=new MainViewPagertAdapter(this,viewPager);
+        adapter.addTitle(tv_first, FirstFragment.class,null);
+        adapter.addTitle(tv_sec, SecondFragment.class,null);
+        adapter.addTitle(tv_third, ThirdFragment.class,null);
+        adapter.addTitle(tv_fourth, ForthFragment.class,null);
+        adapter.addTitle(tv_fifth, FifthFragment.class,null);
+        adapter.notifyDataSetChanged();
     }
 }

@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical" >
 
-    <com.jsy_jiaobao.customview.MyViewPager
+    <com.work.jsy.jiaobao2.selfdefinedView.MyViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

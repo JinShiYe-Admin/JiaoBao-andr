@@ -20,7 +20,7 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
     private Context mContext;
     private ViewPager mViewPager;
     private ArrayList<TextView> mArrayList;
-    private final ArrayList<FragmentInfo> mFragmentInfos = new ArrayList<FragmentInfo>();
+    private  ArrayList<FragmentInfo> mFragmentInfos = new ArrayList<>();
 
     public MainViewPagertAdapter(AppCompatActivity activity, ViewPager viewPager) {
         super(activity.getSupportFragmentManager());
@@ -44,6 +44,7 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
 
     public void addTitle(TextView view, Class<?> clss, Bundle args) {
         FragmentInfo fragmentInfo = new FragmentInfo(clss, args);
+        mFragmentInfos.add(fragmentInfo);
         mArrayList = new ArrayList<>();
         view.setTag(fragmentInfo);
         view.setOnClickListener(this);
@@ -52,20 +53,26 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
 
     @Override
     public void onClick(View view) {
-        Object tag = view.getTag();
-        for (int i = 0; i < mFragmentInfos.size(); i++) {
-            if (mFragmentInfos.get(i) == tag) {
-                mViewPager.setCurrentItem(i);
-                //提交
+        if(mFragmentInfos!=null&&mFragmentInfos.size()>0){
+            Object tag = view.getTag();
+            for (int i = 0; i < mFragmentInfos.size(); i++) {
+                if (mFragmentInfos.get(i) == tag) {
+                    mViewPager.setCurrentItem(i);
+                    //提交
+                }
             }
         }
     }
 
     @Override
     public Fragment getItem(int position) {
-        FragmentInfo fragmentInfo = mFragmentInfos.get(position);
-        Fragment fragment = Fragment.instantiate(mContext, fragmentInfo.clss.getName(), fragmentInfo.args);
-        return fragment;
+        if(mFragmentInfos!=null&&mFragmentInfos.size()>0){
+            FragmentInfo fragmentInfo = mFragmentInfos.get(position);
+            Fragment fragment = Fragment.instantiate(mContext, fragmentInfo.clss.getName(), fragmentInfo.args);
+            return fragment;
+        }else {
+            return null;
+        }
     }
 
     @Override
