@@ -40,7 +40,7 @@ public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecycler
     public void onBindViewHolder(FirstRecyclerViewAdapter.ViewHolder holder, int position) {
 
         holder.mTextView.setText(mArrayMap.keyAt(position));
-        holder.mImageView.setImageResource(mArrayMap.keyAt(position));
+        holder.mImageView.setImageResource(mArrayMap.valueAt(position));
         holder.mLinearLayout.setTag(position);
         holder.mLinearLayout.setOnClickListener(this);
     }

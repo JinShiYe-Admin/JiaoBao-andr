@@ -91,7 +91,11 @@ public class FirstFragment extends Fragment {
      */
     private void initAdapterData(FirstRecyclerViewAdapter viewAdapter){
         ArrayMap<Integer,Integer> arrayMap=new ArrayMap<>();
-//        arrayMap.put();
+        arrayMap.put(R.string.first,R.drawable.ic_card_travel_blue_800_48dp);
+        arrayMap.put(R.string.second,R.drawable.ic_assignment_blue_800_48dp);
+        arrayMap.put(R.string.third,R.drawable.ic_home_blue_800_48dp);
+        arrayMap.put(R.string.fourth,R.drawable.ic_bookmark_border_blue_800_48dp);
+        arrayMap.put(R.string.fifth,R.drawable.ic_chrome_reader_mode_blue_800_48dp);
         viewAdapter.setArrayMap(arrayMap);
         viewAdapter.notifyDataSetChanged();
     }
