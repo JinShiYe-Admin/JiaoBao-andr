@@ -20,7 +20,7 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
     private Context mContext;
     private ViewPager mViewPager;
     private ArrayList<TextView> mArrayList;
-    private  ArrayList<FragmentInfo> mFragmentInfos = new ArrayList<>();
+    private ArrayList<FragmentInfo> mFragmentInfos = new ArrayList<>();
 
     public MainViewPagertAdapter(AppCompatActivity activity, ViewPager viewPager) {
         super(activity.getSupportFragmentManager());
@@ -53,12 +53,11 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
 
     @Override
     public void onClick(View view) {
-        if(mFragmentInfos!=null&&mFragmentInfos.size()>0){
+        if (mFragmentInfos != null && mFragmentInfos.size() > 0) {
             Object tag = view.getTag();
             for (int i = 0; i < mFragmentInfos.size(); i++) {
                 if (mFragmentInfos.get(i) == tag) {
                     mViewPager.setCurrentItem(i);
-                    //提交
                 }
             }
         }
@@ -66,11 +65,11 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
 
     @Override
     public Fragment getItem(int position) {
-        if(mFragmentInfos!=null&&mFragmentInfos.size()>0){
+        if (mFragmentInfos != null && mFragmentInfos.size() > 0) {
             FragmentInfo fragmentInfo = mFragmentInfos.get(position);
             Fragment fragment = Fragment.instantiate(mContext, fragmentInfo.clss.getName(), fragmentInfo.args);
             return fragment;
-        }else {
+        } else {
             return null;
         }
     }
