@@ -16,8 +16,6 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
 import com.bumptech.glide.Glide;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.work.jsy.jiaobao2.R;
 
 import java.util.ArrayList;
