@@ -1,14 +1,10 @@
 package com.work.jsy.jiaobao2.selfdefinedView;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -19,10 +15,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
+import com.bumptech.glide.Glide;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.work.jsy.jiaobao2.R;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 public class SlideShowView extends FrameLayout {
 
     // 使用universal-image-loader插件读取网络图片，需要工程导入universal-image-loader-1.8.6-with-sources.jar
-    private ImageLoader imageLoader;
+//    private ImageLoader imageLoader;
     // 轮播图图片数量
     private static int IMAGE_COUNT = 5;
     // 自动轮播的时间间隔
@@ -91,9 +87,10 @@ public class SlideShowView extends FrameLayout {
         super(context, attrs, defStyle);
         this.context = context;
 
-        ImageLoaderConfiguration imageLoaderConfiguration=ImageLoaderConfiguration.createDefault(context);
-        imageLoader.init(imageLoaderConfiguration);
-        imageLoader = ImageLoader.getInstance();
+//        ImageLoaderConfiguration imageLoaderConfiguration=ImageLoaderConfiguration.createDefault(context);
+//        imageLoader.init(imageLoaderConfiguration);
+//        imageLoader = ImageLoader.getInstance();
+//        Glide.with(this).load
 //		 imageLoader.setErrorImage(R.drawable.default_page);
     }
 
@@ -158,7 +155,7 @@ public class SlideShowView extends FrameLayout {
         // 热点个数与图片特殊相等
         for (int i = 0; i < imageUrls.length; i++) {
             final ImageView view = new ImageView(context);
-            view.setTag(imageUrls[i]);
+//            view.setTag(i,imageUrls[i]);
             // if (i == 0)//给一个默认图
             // view.setBackgroundResource(R.drawable.default_page);
             view.setScaleType(ScaleType.FIT_XY);
@@ -232,7 +229,8 @@ public class SlideShowView extends FrameLayout {
         @Override
         public Object instantiateItem(View container, int position) {
             ImageView imageView = imageViewsList.get(position);
-            imageLoader.displayImage(imageView.getTag() + "", imageView);
+            Glide.with(context).load(imageUrls[position]).into(imageView);
+//            imageLoader.displayImage(imageView.getTag() + "", imageView);
             ((ViewPager) container).addView(imageViewsList.get(position));
             return imageViewsList.get(position);
         }

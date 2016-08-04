@@ -1,9 +1,13 @@
 package com.work.jsy.jiaobao2.fragments;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -24,6 +28,7 @@ import java.util.ArrayList;
 public class FirstFragment extends Fragment {
     private View mView;
     private ArrayList<String> photoList;
+    private final static int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE=0;
 
     @Nullable
     @Override
@@ -44,9 +49,9 @@ public class FirstFragment extends Fragment {
      */
     private void findViews(){
         RecyclerView recyclerView=(RecyclerView)mView.findViewById(R.id.recyclerView_firstFragment);
-//        SlideShowView showView=(SlideShowView) mView.findViewById(R.id.slideShow_firstFragment);
+        SlideShowView showView=(SlideShowView) mView.findViewById(R.id.slideShow_firstFragment);
         setRecyclerView(recyclerView);
-//        setSlideShowView(showView);
+        setSlideShowView(showView);
     }
 
     /**
@@ -100,4 +105,5 @@ public class FirstFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
+
 }
