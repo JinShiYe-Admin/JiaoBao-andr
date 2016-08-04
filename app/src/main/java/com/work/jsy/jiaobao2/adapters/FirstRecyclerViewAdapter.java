@@ -3,6 +3,7 @@ package com.work.jsy.jiaobao2.adapters;
 import android.content.Context;
 import android.support.v4.util.ArrayMap;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
