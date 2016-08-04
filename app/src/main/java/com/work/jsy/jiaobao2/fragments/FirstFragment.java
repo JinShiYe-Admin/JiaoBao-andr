@@ -11,10 +11,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.work.jsy.plan.R;
-import com.work.jsy.plan.adapters.FirstRecyclerViewAdapter;
-import com.work.jsy.plan.selfdefinedView.SlideShowView;
+import com.work.jsy.jiaobao2.R;
+import com.work.jsy.jiaobao2.adapters.FirstRecyclerViewAdapter;
+import com.work.jsy.jiaobao2.selfdefinedView.SlideShowView;
 
 import java.util.ArrayList;
 
