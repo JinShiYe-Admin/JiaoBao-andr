@@ -44,9 +44,9 @@ public class FirstFragment extends Fragment {
      */
     private void findViews(){
         RecyclerView recyclerView=(RecyclerView)mView.findViewById(R.id.recyclerView_firstFragment);
-        SlideShowView showView=(SlideShowView) mView.findViewById(R.id.slideShow_firstFragment);
+//        SlideShowView showView=(SlideShowView) mView.findViewById(R.id.slideShow_firstFragment);
         setRecyclerView(recyclerView);
-        setSlideShowView(showView);
+//        setSlideShowView(showView);
     }
 
     /**
