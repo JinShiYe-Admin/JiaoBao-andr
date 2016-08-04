@@ -7,14 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.work.jsy.jiaobao2.R;
+
 /**
  * Created by admin on 2016/8/3.
  */
 public class SecondFragment extends Fragment {
+    private View mView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        mView = inflater.inflate(R.layout.fragment_second, container, false);
+        return mView;
     }
 
     @Override

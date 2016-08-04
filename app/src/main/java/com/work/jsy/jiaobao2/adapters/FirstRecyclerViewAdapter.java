@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.work.jsy.jiaobao2.R;
@@ -17,9 +18,9 @@ import com.work.jsy.jiaobao2.R;
  * adapter
  * Created by admin on 2016/8/3.
  */
-public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecyclerViewAdapter.ViewHolder> {
+public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecyclerViewAdapter.ViewHolder> implements View.OnClickListener {
     private Context mContext;
-    private ArrayMap<Integer,Integer> mArrayMap;
+    private ArrayMap<Integer, Integer> mArrayMap;
 
     public void setArrayMap(ArrayMap<Integer, Integer> arrayMap) {
         mArrayMap = arrayMap;
@@ -37,23 +38,47 @@ public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecycler
 
     @Override
     public void onBindViewHolder(FirstRecyclerViewAdapter.ViewHolder holder, int position) {
+
         holder.mTextView.setText(mArrayMap.keyAt(position));
         holder.mImageView.setImageResource(mArrayMap.keyAt(position));
+        holder.mLinearLayout.setTag(position);
+        holder.mLinearLayout.setOnClickListener(this);
     }
 
     @Override
     public int getItemCount() {
-        return mArrayMap==null?0:mArrayMap.size();
+        return mArrayMap == null ? 0 : mArrayMap.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        private LinearLayout mLinearLayout;
         private ImageView mImageView;
         private TextView mTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            mLinearLayout = (LinearLayout) itemView.findViewById(R.id.item_linearLayout);
             mImageView = (ImageView) itemView.findViewById(R.id.imageView);
             mTextView = (TextView) itemView.findViewById(R.id.textView);
+        }
+    }
+
+    /**
+     * 监听事件
+     *
+     * @param view
+     */
+    @Override
+    public void onClick(View view) {
+        switch ((int) view.getTag()) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            default:
+                break;
         }
     }
 }
