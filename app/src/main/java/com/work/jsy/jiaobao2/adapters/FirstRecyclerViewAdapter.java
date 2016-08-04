@@ -65,7 +65,6 @@ public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecycler
 
     /**
      * 监听事件
-     *
      * @param view
      */
     @Override
