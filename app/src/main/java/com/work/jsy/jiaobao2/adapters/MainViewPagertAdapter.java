@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,9 +18,10 @@ import java.util.ArrayList;
  * Created by admin on 2016/8/3.
  */
 public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener, View.OnClickListener {
+    private final static String TAG="MainViewPagertAdapter";
     private Context mContext;
     private ViewPager mViewPager;
-    private ArrayList<TextView> mArrayList;
+    private ArrayList<TextView> mArrayList=new ArrayList<>();
     private ArrayList<FragmentInfo> mFragmentInfos = new ArrayList<>();
 
     public MainViewPagertAdapter(AppCompatActivity activity, ViewPager viewPager) {
@@ -45,7 +47,6 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
     public void addTitle(TextView view, Class<?> clss, Bundle args) {
         FragmentInfo fragmentInfo = new FragmentInfo(clss, args);
         mFragmentInfos.add(fragmentInfo);
-        mArrayList = new ArrayList<>();
         view.setTag(fragmentInfo);
         view.setOnClickListener(this);
         mArrayList.add(view);
@@ -54,9 +55,10 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
     @Override
     public void onClick(View view) {
         if (mFragmentInfos != null && mFragmentInfos.size() > 0) {
-            Object tag = view.getTag();
+            FragmentInfo tag = (FragmentInfo)view.getTag();
+            Log.d(TAG,tag.clss.getName());
             for (int i = 0; i < mFragmentInfos.size(); i++) {
-                if (mFragmentInfos.get(i) == tag) {
+                if (mFragmentInfos.get(i).clss.getName() .equals(tag.clss.getName())) {
                     mViewPager.setCurrentItem(i);
                 }
             }
@@ -68,6 +70,7 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
         if (mFragmentInfos != null && mFragmentInfos.size() > 0) {
             FragmentInfo fragmentInfo = mFragmentInfos.get(position);
             Fragment fragment = Fragment.instantiate(mContext, fragmentInfo.clss.getName(), fragmentInfo.args);
+            Log.d(TAG,fragmentInfo.clss.getName());
             return fragment;
         } else {
             return null;

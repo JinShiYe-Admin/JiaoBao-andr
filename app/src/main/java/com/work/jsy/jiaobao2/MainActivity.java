@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.work.jsy.jiaobao2.adapters.MainViewPagertAdapter;
@@ -20,7 +21,7 @@ import com.work.jsy.jiaobao2.fragments.SecondFragment;
 import com.work.jsy.jiaobao2.fragments.ThirdFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
     private TextView tv_first,tv_sec,tv_third,tv_fourth,tv_fifth;
     private ViewPager mViewPager;
     @Override
