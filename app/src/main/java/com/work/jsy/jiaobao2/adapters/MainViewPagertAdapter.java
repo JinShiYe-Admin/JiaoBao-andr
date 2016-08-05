@@ -19,6 +19,7 @@ import java.util.ArrayList;
  */
 public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener, View.OnClickListener {
     private final static String TAG="MainViewPagertAdapter";
+    private int clickFirst=0;
     private Context mContext;
     private ViewPager mViewPager;
     private ArrayList<TextView> mArrayList=new ArrayList<>();
@@ -52,9 +53,26 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
         mArrayList.add(view);
     }
 
+    /**
+     * 设置允许获取焦点和通过点击获取焦点
+     * @param view
+     */
+    private void setFocusable(View view) {
+        view.setFocusable(true);
+        view.setFocusableInTouchMode(true);
+    }
+
     @Override
     public void onClick(View view) {
         if (mFragmentInfos != null && mFragmentInfos.size() > 0) {
+            if(clickFirst==0){
+                mArrayList.get(0).setFocusableInTouchMode(false);
+                clickFirst++;
+            }else {
+                setFocusable(view);
+                view.requestFocus();
+                view.setFocusableInTouchMode(false);
+            }
             FragmentInfo tag = (FragmentInfo)view.getTag();
             Log.d(TAG,tag.clss.getName());
             for (int i = 0; i < mFragmentInfos.size(); i++) {
@@ -89,7 +107,9 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
 
     @Override
     public void onPageSelected(int position) {
+        mArrayList.get(position).setFocusableInTouchMode(true);
         mArrayList.get(position).requestFocus();
+        mArrayList.get(position).setFocusableInTouchMode(false);
     }
 
     @Override

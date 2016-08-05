@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import com.work.jsy.jiaobao2.adapters.MainViewPagertAdapter;
@@ -130,6 +129,8 @@ public class MainActivity extends AppCompatActivity
         adapter.addTitle(tv_fourth, ForthFragment.class,null);
         adapter.addTitle(tv_fifth, FifthFragment.class,null);
         adapter.notifyDataSetChanged();
+        tv_first.setFocusable(true);
+        tv_first.setFocusableInTouchMode(true);
         tv_first.requestFocus();
     }
 }
