@@ -2,12 +2,11 @@ package com.work.jsy.jiaobao2.adapters;
 
 import android.content.Context;
 import android.support.v4.util.ArrayMap;
-
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -61,6 +60,9 @@ public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecycler
             mLinearLayout = (LinearLayout) itemView.findViewById(R.id.item_linearLayout);
             mImageView = (CircularImageView) itemView.findViewById(R.id.imageView);
             mTextView = (TextView) itemView.findViewById(R.id.textView);
+            DisplayMetrics displayMetrics =mContext.getResources().getDisplayMetrics();
+            int width=displayMetrics.widthPixels;
+            mLinearLayout.setLayoutParams(new RecyclerView.LayoutParams(width/4,ViewGroup.LayoutParams.WRAP_CONTENT));
         }
     }
 
