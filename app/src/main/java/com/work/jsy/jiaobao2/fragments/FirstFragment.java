@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.work.jsy.jiaobao2.R;
 import com.work.jsy.jiaobao2.adapters.FirstRecyclerViewAdapter;
+import com.work.jsy.jiaobao2.adapters.SecondRecyclerViewAdapter;
 import com.work.jsy.jiaobao2.selfdefinedView.SlideShowView;
 
 import java.util.ArrayList;
@@ -49,10 +51,34 @@ public class FirstFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) mView.findViewById(R.id.recyclerView_firstFragment);
         SlideShowView showView = (SlideShowView) mView.findViewById(R.id.slideShow_firstFragment);
         TextView textView = (TextView) mView.findViewById(R.id.tv_firstFragment);
+        RecyclerView recyclerViewSecond = (RecyclerView) mView.findViewById(R.id.recyclerView_firstFragment_Second);
         textView.setVisibility(View.VISIBLE);
         textView.setText("一二三四五六七八九十");
         setRecyclerView(recyclerView);
         setSlideShowView(showView);
+        setRecyclerViewSecond(recyclerViewSecond);
+    }
+    /**
+     * 初始化RecyclerViewSecond
+     * 加载Adapter
+     */
+    private void setRecyclerViewSecond(RecyclerView recyclerViewSecond) {
+        recyclerViewSecond.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        recyclerViewSecond.setItemAnimator(new DefaultItemAnimator());
+        SecondRecyclerViewAdapter viewAdapter = new SecondRecyclerViewAdapter(getContext());
+        recyclerViewSecond.setAdapter(viewAdapter);
+        initAdapterDataSecond(viewAdapter);
+    }
+
+    private void initAdapterDataSecond(SecondRecyclerViewAdapter viewAdapter) {
+        ArrayMap<Integer, Integer> arrayMap = new ArrayMap<>();
+        arrayMap.put(R.string.first,0);
+        arrayMap.put(R.string.second,1);
+        arrayMap.put(R.string.third,2);
+        arrayMap.put(R.string.fourth,3);
+        arrayMap.put(R.string.fifth,4);
+        viewAdapter.setArrayMap(arrayMap);
+        viewAdapter.notifyDataSetChanged();
     }
 
     /**
