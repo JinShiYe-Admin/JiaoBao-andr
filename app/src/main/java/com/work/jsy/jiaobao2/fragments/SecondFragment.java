@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.work.jsy.jiaobao2.R;
 
 /**
@@ -25,5 +27,10 @@ public class SecondFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        findViews();
+    }
+    private void findViews(){
+        ImageView imageView=(ImageView)mView.findViewById(R.id.imageView);
+        Glide.with(this).load("http://imgstore04.cdn.sogou.com/app/a/100520024/877e990117d6a7ebc68f46c5e76fc47a").into(imageView);
     }
 }

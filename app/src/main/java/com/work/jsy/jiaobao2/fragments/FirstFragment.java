@@ -1,13 +1,9 @@
 package com.work.jsy.jiaobao2.fragments;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.work.jsy.jiaobao2.R;
 import com.work.jsy.jiaobao2.adapters.FirstRecyclerViewAdapter;
 import com.work.jsy.jiaobao2.selfdefinedView.SlideShowView;
@@ -28,7 +25,6 @@ import java.util.ArrayList;
 public class FirstFragment extends Fragment {
     private View mView;
     private ArrayList<String> photoList;
-    private final static int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE=0;
 
     @Nullable
     @Override
@@ -57,7 +53,7 @@ public class FirstFragment extends Fragment {
     /**
      * 初始化RecyclerView
      * 加载Adapter
-     * @param recyclerView
+     * @param recyclerView r
      */
     private void setRecyclerView(RecyclerView recyclerView){
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
@@ -69,7 +65,7 @@ public class FirstFragment extends Fragment {
 
     /**
      * 轮播图加载图片并播放
-     * @param showView
+     * @param showView show
      */
     private void setSlideShowView(SlideShowView showView){
         getPhotoList();
@@ -83,7 +79,7 @@ public class FirstFragment extends Fragment {
      */
     private void getPhotoList(){
         photoList=new ArrayList<>();
-        photoList.add("https://github.com/rockan007/photos/blob/master/MGN%7B4DZ5JP%40FU5UEO%7DU%7DL5B.png");
+        photoList.add("http://imgstore04.cdn.sogou.com/app/a/100520024/877e990117d6a7ebc68f46c5e76fc47a");
         photoList.add("https://github.com/rockan007/photos/blob/master/QI%7B~59_DQ%5BTR%257~M09SD%40NY.png");
     }
     /**
