@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.pkmmte.view.CircularImageView;
 import com.work.jsy.jiaobao2.R;
 
 
@@ -52,13 +53,13 @@ public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecycler
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private LinearLayout mLinearLayout;
-        private ImageView mImageView;
+        private CircularImageView mImageView;
         private TextView mTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mLinearLayout = (LinearLayout) itemView.findViewById(R.id.item_linearLayout);
-            mImageView = (ImageView) itemView.findViewById(R.id.imageView);
+            mImageView = (CircularImageView) itemView.findViewById(R.id.imageView);
             mTextView = (TextView) itemView.findViewById(R.id.textView);
         }
     }
