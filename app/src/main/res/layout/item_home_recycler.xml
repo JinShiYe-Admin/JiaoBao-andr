@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="vertical">
-
-<com.work.jsy.jiaobao2.selfdefinedView.SlideShowView
-    android:id="@+id/slideShow_firstFragment"
     android:layout_width="match_parent"
-    android:layout_height="300dp" />
-
-<TextView
-    android:id="@+id/tv_firstFragment"
-    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:singleLine="true"
-    android:visibility="gone" />
+    android:orientation="vertical">
 
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/recyclerView_firstFragment"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+    <com.work.jsy.jiaobao2.selfdefinedView.SlideShowView
+        android:id="@+id/slideShow_firstFragment"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
 
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/recyclerView_firstFragment_Second"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="2"
-    android:background="#757575" />
+    <TextView
+        android:id="@+id/tv_firstFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView_firstFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView_firstFragment_Second"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
 
 </LinearLayout>
