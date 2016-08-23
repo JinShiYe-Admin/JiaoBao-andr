@@ -38,7 +38,6 @@ public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecycler
 
     @Override
     public void onBindViewHolder(FirstRecyclerViewAdapter.ViewHolder holder, int position) {
-
         holder.mTextView.setText(mArrayMap.keyAt(position));
         holder.mImageView.setImageResource(mArrayMap.valueAt(position));
         holder.mLinearLayout.setTag(position);
@@ -60,14 +59,15 @@ public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecycler
             mLinearLayout = (LinearLayout) itemView.findViewById(R.id.item_linearLayout);
             mImageView = (CircularImageView) itemView.findViewById(R.id.imageView);
             mTextView = (TextView) itemView.findViewById(R.id.textView);
-            DisplayMetrics displayMetrics =mContext.getResources().getDisplayMetrics();
-            int width=displayMetrics.widthPixels;
-            mLinearLayout.setLayoutParams(new RecyclerView.LayoutParams(width/4,ViewGroup.LayoutParams.WRAP_CONTENT));
+            DisplayMetrics displayMetrics = mContext.getResources().getDisplayMetrics();
+            int width = displayMetrics.widthPixels;
+            mLinearLayout.setLayoutParams(new RecyclerView.LayoutParams(width / 4, ViewGroup.LayoutParams.WRAP_CONTENT));
         }
     }
 
     /**
      * 监听事件
+     *
      * @param view
      */
     @Override

@@ -1,39 +1,28 @@
 package com.work.jsy.jiaobao2.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.work.jsy.jiaobao2.R;
-import com.work.jsy.jiaobao2.adapters.FirstRecyclerViewAdapter;
-import com.work.jsy.jiaobao2.adapters.SecondRecyclerViewAdapter;
-import com.work.jsy.jiaobao2.selfdefinedView.SlideShowView;
-
-import java.util.ArrayList;
+import com.work.jsy.jiaobao2.adapters.HomeRecyclerViewAdapter;
 
 /**
- * 第一个界面
+ * 第一个界面,整个界面是由一个RecyclerView组成
  * Created by admin on 2016/8/3.
  */
 public class FirstFragment extends Fragment {
     private View mView;
-    private ArrayList<String> photoList;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        return super.onCreateView(inflater, container, savedInstanceState);
         mView = inflater.inflate(R.layout.fragment_first, container, false);
         return mView;
     }
@@ -44,102 +33,16 @@ public class FirstFragment extends Fragment {
         findViews();
     }
 
-    /**
-     * view
-     */
     private void findViews() {
-        RecyclerView recyclerView = (RecyclerView) mView.findViewById(R.id.recyclerView_firstFragment);
-        SlideShowView showView = (SlideShowView) mView.findViewById(R.id.slideShow_firstFragment);
-        TextView textView = (TextView) mView.findViewById(R.id.tv_firstFragment);
-        RecyclerView recyclerViewSecond = (RecyclerView) mView.findViewById(R.id.recyclerView_firstFragment_Second);
-        textView.setVisibility(View.VISIBLE);
-        textView.setText("一二三四五六七八九十");
+        RecyclerView recyclerView = (RecyclerView) mView.findViewById(R.id.recyclerView);
         setRecyclerView(recyclerView);
-        setSlideShowView(showView);
-        setRecyclerViewSecond(recyclerViewSecond);
-    }
-    /**
-     * 初始化RecyclerViewSecond
-     * 加载Adapter
-     */
-    private void setRecyclerViewSecond(RecyclerView recyclerViewSecond) {
-        recyclerViewSecond.setLayoutManager(new GridLayoutManager(getContext(), 1));
-        recyclerViewSecond.setItemAnimator(new DefaultItemAnimator());
-        SecondRecyclerViewAdapter viewAdapter = new SecondRecyclerViewAdapter(getContext());
-        recyclerViewSecond.setAdapter(viewAdapter);
-        initAdapterDataSecond(viewAdapter);
     }
 
-    private void initAdapterDataSecond(SecondRecyclerViewAdapter viewAdapter) {
-        ArrayMap<Integer, Integer> arrayMap = new ArrayMap<>();
-        arrayMap.put(R.string.first,0);
-        arrayMap.put(R.string.second,1);
-        arrayMap.put(R.string.third,2);
-        arrayMap.put(R.string.fourth,3);
-        arrayMap.put(R.string.fifth,4);
-        viewAdapter.setArrayMap(arrayMap);
-        viewAdapter.notifyDataSetChanged();
-    }
-
-    /**
-     * 初始化RecyclerView
-     * 加载Adapter
-     *
-     * @param recyclerView r
-     */
     private void setRecyclerView(RecyclerView recyclerView) {
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        mLayoutManager.setOrientation(OrientationHelper.HORIZONTAL);
-        recyclerView.setLayoutManager(mLayoutManager);
-        //recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        FirstRecyclerViewAdapter viewAdapter = new FirstRecyclerViewAdapter(getContext());
+        HomeRecyclerViewAdapter viewAdapter = new HomeRecyclerViewAdapter(getContext());
         recyclerView.setAdapter(viewAdapter);
-        initAdapterData(viewAdapter);
-    }
-
-    /**
-     * 轮播图加载图片并播放
-     *
-     * @param showView show
-     */
-    private void setSlideShowView(SlideShowView showView) {
-        getPhotoList();
-        showView.setImageUrls(photoList);
-        showView.setCurrentItem(0);
-        showView.startPlay();
-    }
-
-    /**
-     * 获取图片列表
-     */
-    private void getPhotoList() {
-        photoList = new ArrayList<>();
-        photoList.add("http://imgstore04.cdn.sogou.com/app/a/100520024/877e990117d6a7ebc68f46c5e76fc47a");
-        photoList.add("https://github.com/rockan007/photos/blob/master/QI%7B~59_DQ%5BTR%257~M09SD%40NY.png");
-    }
-
-    /**
-     * adapter加载数据
-     */
-    private void initAdapterData(FirstRecyclerViewAdapter viewAdapter) {
-        ArrayMap<Integer, Integer> arrayMap = new ArrayMap<>();
-        arrayMap.put(R.string.first, R.drawable.ic_card_travel_blue_800_48dp);
-        arrayMap.put(R.string.second, R.drawable.ic_assignment_blue_800_48dp);
-        arrayMap.put(R.string.third, R.drawable.ic_home_blue_800_48dp);
-        arrayMap.put(R.string.fourth, R.drawable.ic_bookmark_border_blue_800_48dp);
-        arrayMap.put(R.string.fifth, R.drawable.ic_chrome_reader_mode_blue_800_48dp);
-        viewAdapter.setArrayMap(arrayMap);
         viewAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 }

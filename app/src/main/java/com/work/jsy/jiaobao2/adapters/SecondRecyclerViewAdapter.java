@@ -37,9 +37,9 @@ public class SecondRecyclerViewAdapter extends RecyclerView.Adapter<SecondRecycl
     @Override
     public void onBindViewHolder(SecondRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.tv_mFirst.setText(mArrayMap.keyAt(position));
-
         holder.tv_mMore.setTag(mArrayMap.keyAt(position));
         holder.tv_mMore.setOnClickListener(this);
+        setRecyclerView(holder.recyclerView);
     }
 
     @Override
@@ -62,26 +62,24 @@ public class SecondRecyclerViewAdapter extends RecyclerView.Adapter<SecondRecycl
             tv_mFirst = (TextView) itemView.findViewById(R.id.tv_first);
             tv_mMore = (TextView) itemView.findViewById(R.id.tv_more);
             recyclerView = (RecyclerView) itemView.findViewById(R.id.recyclerView);
-            setRecyclerView(recyclerView);
         }
+    }
 
-        private void setRecyclerView(RecyclerView recyclerView) {
-            recyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
-            FirstRecyclerViewAdapter viewAdapter = new FirstRecyclerViewAdapter(mContext);
-            recyclerView.setAdapter(viewAdapter);
-            initAdapterData(viewAdapter);
-        }
+    private void setRecyclerView(RecyclerView recyclerView) {
+        recyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        ThirdRecyclerViewAdapter viewAdapter = new ThirdRecyclerViewAdapter(mContext);
+        recyclerView.setAdapter(viewAdapter);
+        initAdapterData(viewAdapter);
+    }
 
-        private void initAdapterData(FirstRecyclerViewAdapter viewAdapter) {
-            ArrayMap<Integer, Integer> arrayMap = new ArrayMap<>();
-            arrayMap.put(R.string.first, R.drawable.ic_card_travel_blue_800_48dp);
-            arrayMap.put(R.string.second, R.drawable.ic_assignment_blue_800_48dp);
-            arrayMap.put(R.string.third, R.drawable.ic_home_blue_800_48dp);
-            arrayMap.put(R.string.fourth, R.drawable.ic_bookmark_border_blue_800_48dp);
-            arrayMap.put(R.string.fifth, R.drawable.ic_chrome_reader_mode_blue_800_48dp);
-            viewAdapter.setArrayMap(arrayMap);
-            viewAdapter.notifyDataSetChanged();
-        }
+    private void initAdapterData(ThirdRecyclerViewAdapter viewAdapter) {
+        ArrayMap<Integer, Integer> arrayMap = new ArrayMap<>();
+        arrayMap.put(R.string.first, R.drawable.my);
+        arrayMap.put(R.string.second, R.drawable.my);
+        arrayMap.put(R.string.third, R.drawable.my);
+        arrayMap.put(R.string.fourth, R.drawable.my);
+        viewAdapter.setArrayMap(arrayMap);
+        viewAdapter.notifyDataSetChanged();
     }
 }
