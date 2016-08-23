@@ -24,30 +24,35 @@
         <RadioButton
             android:id="@+id/first"
             style="@style/bottom_textView"
+            android:button="@null"
             android:drawableTop="@drawable/focused_ic_home"
             android:text="@string/first" />
 
         <RadioButton
             android:id="@+id/second"
             style="@style/bottom_textView"
+            android:button="@null"
             android:drawableTop="@drawable/focused_ic_assigment"
             android:text="@string/second" />
 
         <RadioButton
             android:id="@+id/third"
             style="@style/bottom_textView"
+            android:button="@null"
             android:drawableTop="@drawable/focused_ic_chrome"
             android:text="@string/third" />
 
         <RadioButton
             android:id="@+id/fourth"
             style="@style/bottom_textView"
+            android:button="@null"
             android:drawableTop="@drawable/focused_ic_card"
             android:text="@string/fourth" />
 
         <RadioButton
             android:id="@+id/fifth"
             style="@style/bottom_textView"
+            android:button="@null"
             android:drawableTop="@drawable/focused_ic_bookmark"
             android:text="@string/fifth" />
 

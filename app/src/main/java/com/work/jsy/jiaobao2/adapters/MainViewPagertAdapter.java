@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -23,7 +22,7 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
     private int clickFirst=0;
     private Context mContext;
     private ViewPager mViewPager;
-    private ArrayList<TextView> mArrayList=new ArrayList<>();
+    private ArrayList<RadioButton> mArrayList=new ArrayList<>();
     private ArrayList<FragmentInfo> mFragmentInfos = new ArrayList<>();
 
     public MainViewPagertAdapter(AppCompatActivity activity, ViewPager viewPager) {
@@ -93,9 +92,7 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
 
     @Override
     public void onPageSelected(int position) {
-        mArrayList.get(position).setFocusableInTouchMode(true);
-        mArrayList.get(position).requestFocus();
-        mArrayList.get(position).setFocusableInTouchMode(false);
+        mArrayList.get(position).setChecked(true);
     }
 
     @Override
