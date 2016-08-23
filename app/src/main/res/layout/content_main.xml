@@ -15,41 +15,41 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <LinearLayout
+    <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorMenu"
         android:orientation="horizontal">
 
-        <TextView
+        <RadioButton
             android:id="@+id/first"
             style="@style/bottom_textView"
             android:drawableTop="@drawable/focused_ic_home"
             android:text="@string/first" />
 
-        <TextView
+        <RadioButton
             android:id="@+id/second"
             style="@style/bottom_textView"
             android:drawableTop="@drawable/focused_ic_assigment"
             android:text="@string/second" />
 
-        <TextView
+        <RadioButton
             android:id="@+id/third"
             style="@style/bottom_textView"
             android:drawableTop="@drawable/focused_ic_chrome"
             android:text="@string/third" />
 
-        <TextView
+        <RadioButton
             android:id="@+id/fourth"
             style="@style/bottom_textView"
             android:drawableTop="@drawable/focused_ic_card"
             android:text="@string/fourth" />
 
-        <TextView
+        <RadioButton
             android:id="@+id/fifth"
             style="@style/bottom_textView"
             android:drawableTop="@drawable/focused_ic_bookmark"
             android:text="@string/fifth" />
 
-    </LinearLayout>
+    </RadioGroup>
 </LinearLayout>

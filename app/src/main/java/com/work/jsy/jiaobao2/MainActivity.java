@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.work.jsy.jiaobao2.adapters.MainViewPagertAdapter;
@@ -20,9 +21,10 @@ import com.work.jsy.jiaobao2.fragments.SecondFragment;
 import com.work.jsy.jiaobao2.fragments.ThirdFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
-    private TextView tv_first,tv_sec,tv_third,tv_fourth,tv_fifth;
+        implements NavigationView.OnNavigationItemSelectedListener {
+    private RadioButton tv_first, tv_sec, tv_third, tv_fourth, tv_fifth;
     private ViewPager mViewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+            mViewPager.getCurrentItem();
         } else {
             super.onBackPressed();
         }
@@ -105,31 +108,31 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     /**
      * initViews
      */
-    private void initViews(){
-        tv_first=(TextView)findViewById(R.id.first);
-        tv_sec=(TextView)findViewById(R.id.second);
-        tv_third=(TextView)findViewById(R.id.third);
-        tv_fourth=(TextView)findViewById(R.id.fourth);
-        tv_fifth=(TextView)findViewById(R.id.fifth);
-        mViewPager=(ViewPager)findViewById(R.id.fragment_main);
+    private void initViews() {
+        tv_first = (RadioButton) findViewById(R.id.first);
+        tv_sec = (RadioButton) findViewById(R.id.second);
+        tv_third = (RadioButton) findViewById(R.id.third);
+        tv_fourth = (RadioButton) findViewById(R.id.fourth);
+        tv_fifth = (RadioButton) findViewById(R.id.fifth);
+        mViewPager = (ViewPager) findViewById(R.id.fragment_main);
         addFragments(mViewPager);
     }
+
     /**
      * addFragments
      */
-    private void addFragments(ViewPager viewPager){
-        MainViewPagertAdapter adapter=new MainViewPagertAdapter(this,viewPager);
-        adapter.addTitle(tv_first, FirstFragment.class,null);
-        adapter.addTitle(tv_sec, SecondFragment.class,null);
-        adapter.addTitle(tv_third, ThirdFragment.class,null);
-        adapter.addTitle(tv_fourth, ForthFragment.class,null);
-        adapter.addTitle(tv_fifth, FifthFragment.class,null);
+    private void addFragments(ViewPager viewPager) {
+        MainViewPagertAdapter adapter = new MainViewPagertAdapter(this, viewPager);
+        adapter.addTitle(tv_first, FirstFragment.class, null);
+        adapter.addTitle(tv_sec, SecondFragment.class, null);
+        adapter.addTitle(tv_third, ThirdFragment.class, null);
+        adapter.addTitle(tv_fourth, ForthFragment.class, null);
+        adapter.addTitle(tv_fifth, FifthFragment.class, null);
         adapter.notifyDataSetChanged();
-        tv_first.setFocusable(true);
-        tv_first.setFocusableInTouchMode(true);
-        tv_first.requestFocus();
+        tv_first.setChecked(true);
     }
 }

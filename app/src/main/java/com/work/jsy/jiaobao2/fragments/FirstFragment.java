@@ -1,11 +1,13 @@
 package com.work.jsy.jiaobao2.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import com.work.jsy.jiaobao2.adapters.HomeRecyclerViewAdapter;
  * Created by admin on 2016/8/3.
  */
 public class FirstFragment extends Fragment {
+    final static String TAG="FirstFragment";
     private View mView;
 
     @Nullable
@@ -44,5 +47,17 @@ public class FirstFragment extends Fragment {
         HomeRecyclerViewAdapter viewAdapter = new HomeRecyclerViewAdapter(getContext());
         recyclerView.setAdapter(viewAdapter);
         viewAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.i(TAG,TAG+"onAttach");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.i(TAG,TAG+"onDetach");
     }
 }

@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
         }
     }
 
-    public void addTitle(TextView view, Class<?> clss, Bundle args) {
+    public void addTitle(RadioButton view, Class<?> clss, Bundle args) {
         FragmentInfo fragmentInfo = new FragmentInfo(clss, args);
         mFragmentInfos.add(fragmentInfo);
         view.setTag(fragmentInfo);
@@ -53,26 +54,11 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
         mArrayList.add(view);
     }
 
-    /**
-     * 设置允许获取焦点和通过点击获取焦点
-     * @param view
-     */
-    private void setFocusable(View view) {
-        view.setFocusable(true);
-        view.setFocusableInTouchMode(true);
-    }
+
 
     @Override
     public void onClick(View view) {
         if (mFragmentInfos != null && mFragmentInfos.size() > 0) {
-            if(clickFirst==0){
-                mArrayList.get(0).setFocusableInTouchMode(false);
-                clickFirst++;
-            }else {
-                setFocusable(view);
-                view.requestFocus();
-                view.setFocusableInTouchMode(false);
-            }
             FragmentInfo tag = (FragmentInfo)view.getTag();
             Log.d(TAG,tag.clss.getName());
             for (int i = 0; i < mFragmentInfos.size(); i++) {
