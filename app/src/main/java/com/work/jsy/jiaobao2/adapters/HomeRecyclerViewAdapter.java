@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.work.jsy.jiaobao2.R;
 import com.work.jsy.jiaobao2.selfdefinedView.SlideShowView;
+import com.work.jsy.jiaobao2.util.DividerItemDecoration;
 
 import java.util.ArrayList;
 
@@ -121,6 +122,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     private void setRecyclerViewSecond(RecyclerView recyclerViewSecond) {
         recyclerViewSecond.setLayoutManager(new GridLayoutManager(mContext, 1));
         recyclerViewSecond.setItemAnimator(new DefaultItemAnimator());
+        recyclerViewSecond.addItemDecoration(new DividerItemDecoration(mContext,DividerItemDecoration.VERTICAL_LIST));
         SecondRecyclerViewAdapter viewAdapter = new SecondRecyclerViewAdapter(mContext);
         recyclerViewSecond.setAdapter(viewAdapter);
         initAdapterDataSecond(viewAdapter);
