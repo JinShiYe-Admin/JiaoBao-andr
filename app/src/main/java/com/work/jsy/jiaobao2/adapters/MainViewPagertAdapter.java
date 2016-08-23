@@ -19,12 +19,10 @@ import java.util.ArrayList;
  */
 public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener, View.OnClickListener {
     private final static String TAG="MainViewPagertAdapter";
-    private int clickFirst=0;
     private Context mContext;
     private ViewPager mViewPager;
     private ArrayList<RadioButton> mArrayList=new ArrayList<>();
     private ArrayList<FragmentInfo> mFragmentInfos = new ArrayList<>();
-
     public MainViewPagertAdapter(AppCompatActivity activity, ViewPager viewPager) {
         super(activity.getSupportFragmentManager());
         mContext = activity;
