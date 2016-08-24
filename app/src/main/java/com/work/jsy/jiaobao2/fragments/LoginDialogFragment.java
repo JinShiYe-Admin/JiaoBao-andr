@@ -1,12 +1,13 @@
 package com.work.jsy.jiaobao2.fragments;
 
-import android.app.DialogFragment;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
 
 import com.work.jsy.jiaobao2.R;
 
@@ -39,6 +40,7 @@ public class LoginDialogFragment extends DialogFragment implements View.OnClickL
     }
 
     private void initViews() {
+        mView.findViewById(R.id.img_cancel).setOnClickListener(this);
         mView.findViewById(R.id.register_weiXin).setOnClickListener(this);
         mView.findViewById(R.id.register_qq).setOnClickListener(this);
         mView.findViewById(R.id.login_self).setOnClickListener(this);
@@ -55,6 +57,11 @@ public class LoginDialogFragment extends DialogFragment implements View.OnClickL
             case R.id.login_self:
                 break;
             case R.id.register_self:
+                break;
+            case R.id.img_cancel:
+                dismiss();
+                break;
+            default:
                 break;
         }
     }

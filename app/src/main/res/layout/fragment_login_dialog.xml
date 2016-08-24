@@ -13,7 +13,7 @@
             android:layout_centerInParent="true"
             android:textAppearance="?android:textAppearanceMedium"/>
         <ImageView
-            android:id="@+id/btn_cancel"
+            android:id="@+id/img_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
