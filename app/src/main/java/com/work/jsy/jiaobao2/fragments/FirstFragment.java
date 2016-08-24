@@ -16,7 +16,7 @@ import com.work.jsy.jiaobao2.R;
 import com.work.jsy.jiaobao2.adapters.HomeRecyclerViewAdapter;
 
 /**
- * 第一个界面,整个界面是由一个RecyclerView组成
+ * FirstFragment界面,整个界面是由一个RecyclerView组成
  * Created by admin on 2016/8/3.
  */
 public class FirstFragment extends Fragment {
@@ -42,7 +42,7 @@ public class FirstFragment extends Fragment {
     }
 
     private void setRecyclerView(RecyclerView recyclerView) {
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));//设置布局管理器
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         HomeRecyclerViewAdapter viewAdapter = new HomeRecyclerViewAdapter(getContext());
         recyclerView.setAdapter(viewAdapter);

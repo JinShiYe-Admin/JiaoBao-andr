@@ -15,7 +15,7 @@ import com.work.jsy.jiaobao2.R;
 
 
 /**
- * adapter
+ * FirstFragment界面中部RecyclerView的Adapter
  * Created by admin on 2016/8/3.
  */
 public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecyclerViewAdapter.ViewHolder> implements View.OnClickListener {
@@ -50,9 +50,9 @@ public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecycler
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private LinearLayout mLinearLayout;
-        private CircularImageView mImageView;
-        private TextView mTextView;
+        private LinearLayout mLinearLayout;//图标区域
+        private CircularImageView mImageView;//图标
+        private TextView mTextView;//图标下的文字
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -61,14 +61,12 @@ public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecycler
             mTextView = (TextView) itemView.findViewById(R.id.textView);
             DisplayMetrics displayMetrics = mContext.getResources().getDisplayMetrics();
             int width = displayMetrics.widthPixels;
-            mLinearLayout.setLayoutParams(new RecyclerView.LayoutParams(width / 4, ViewGroup.LayoutParams.WRAP_CONTENT));
+            mLinearLayout.setLayoutParams(new RecyclerView.LayoutParams(width / 4, ViewGroup.LayoutParams.WRAP_CONTENT));//默认显示4个图标
         }
     }
 
     /**
-     * 监听事件
-     *
-     * @param view
+     * 图标区域监听事件
      */
     @Override
     public void onClick(View view) {

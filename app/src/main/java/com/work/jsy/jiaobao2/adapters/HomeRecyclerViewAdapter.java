@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.work.jsy.jiaobao2.R;
 import com.work.jsy.jiaobao2.selfdefinedView.SlideShowView;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
  * 第一个界面RecyclerView的Adapter
  * Created by ShangLinMo on 2016/8/22.
  */
-public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder> {
+public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder> implements View.OnClickListener {
     private Context mContext;
     private ArrayList<String> photoList;
     public HomeRecyclerViewAdapter(Context context) {
@@ -39,6 +40,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.textView.setVisibility(View.VISIBLE);
         holder.textView.setText("一二三四五六七八九十");
+        holder.textView.setOnClickListener(this);
         setRecyclerView(holder.recyclerView);
         setSlideShowView(holder.showView);
         setRecyclerViewSecond(holder.recyclerViewSecond);
@@ -49,12 +51,21 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         return 1;
     }
 
+    /**
+     * 推荐标题的点击事件
+     *
+     */
+    @Override
+    public void onClick(View view) {
+        Toast.makeText(mContext,((TextView)view).getText(),Toast.LENGTH_SHORT).show();
+    }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        RecyclerView recyclerView;
-        SlideShowView showView;
-        TextView textView;
-        RecyclerView recyclerViewSecond;
+        SlideShowView showView;//头部可轮播的图片
+        TextView textView;//头部和中部之间的推荐标题
+        RecyclerView recyclerView;//中部可左右滑动的图标
+        RecyclerView recyclerViewSecond;//底部内容
         public ViewHolder(View itemView) {
             super(itemView);
             recyclerView = (RecyclerView) itemView.findViewById(R.id.recyclerView_firstFragment);
@@ -65,15 +76,13 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     }
 
     /**
-     * 初始化第一个RecyclerView
+     * 初始化中部RecyclerView
      * 加载Adapter
-     *
-     * @param recyclerView r
      */
     private void setRecyclerView(RecyclerView recyclerView) {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(mContext);
         mLayoutManager.setOrientation(OrientationHelper.HORIZONTAL);
-        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setLayoutManager(mLayoutManager);//设置布局管理器
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         FirstRecyclerViewAdapter viewAdapter = new FirstRecyclerViewAdapter(mContext);
         recyclerView.setAdapter(viewAdapter);
@@ -81,7 +90,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     }
 
     /**
-     * 第一个RecyclerView的adapter加载数据
+     * 中部RecyclerView的adapter加载数据
      */
     private void initAdapterData(FirstRecyclerViewAdapter viewAdapter) {
         ArrayMap<Integer, Integer> arrayMap = new ArrayMap<>();
@@ -95,9 +104,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     }
 
     /**
-     * 轮播图加载图片并播放
-     *
-     * @param showView show
+     * 头部轮播图加载图片并播放
      */
     private void setSlideShowView(SlideShowView showView) {
         getPhotoList();
@@ -116,20 +123,20 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     }
 
     /**
-     * 初始化第二个RecyclerView
+     * 初始化底部RecyclerView
      * 加载Adapter
      */
     private void setRecyclerViewSecond(RecyclerView recyclerViewSecond) {
-        recyclerViewSecond.setLayoutManager(new GridLayoutManager(mContext, 1));
+        recyclerViewSecond.setLayoutManager(new GridLayoutManager(mContext, 1));//设置布局管理器
         recyclerViewSecond.setItemAnimator(new DefaultItemAnimator());
-        recyclerViewSecond.addItemDecoration(new DividerItemDecoration(mContext,DividerItemDecoration.VERTICAL_LIST));
+        recyclerViewSecond.addItemDecoration(new DividerItemDecoration(mContext,DividerItemDecoration.VERTICAL_LIST));//设置分割线
         SecondRecyclerViewAdapter viewAdapter = new SecondRecyclerViewAdapter(mContext);
         recyclerViewSecond.setAdapter(viewAdapter);
         initAdapterDataSecond(viewAdapter);
     }
 
     /**
-     * 第二个RecyclerView的adapter加载数据
+     * 底部RecyclerView的adapter加载数据
      */
     private void initAdapterDataSecond(SecondRecyclerViewAdapter viewAdapter) {
         ArrayMap<Integer, Integer> arrayMap = new ArrayMap<>();

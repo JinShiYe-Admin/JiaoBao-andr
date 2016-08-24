@@ -7,7 +7,7 @@
     <com.work.jsy.jiaobao2.selfdefinedView.SlideShowView
         android:id="@+id/slideShow_firstFragment"
         android:layout_width="match_parent"
-        android:layout_height="300dp" />
+        android:layout_height="200dp" />
 
     <TextView
         android:id="@+id/tv_firstFragment"
