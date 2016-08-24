@@ -20,6 +20,7 @@ public class LoginDialogFragment extends DialogFragment implements View.OnClickL
     public static LoginDialogFragment getNewInstance() {
         if (newInstance == null) {
             newInstance = new LoginDialogFragment();
+            newInstance.setStyle(STYLE_NO_TITLE,0);
         }
         return newInstance;
     }
