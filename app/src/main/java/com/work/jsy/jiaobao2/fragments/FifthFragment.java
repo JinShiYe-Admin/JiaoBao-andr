@@ -51,6 +51,7 @@ public class FifthFragment extends Fragment implements View.OnClickListener {
         //btn_right.setVisibility(View.VISIBLE);
         setRecyclerView(recyclerView);
         tv_login.setOnClickListener(this);
+        tv_register.setOnClickListener(this);
     }
 
     private void setRecyclerView(RecyclerView recyclerView) {
@@ -67,6 +68,7 @@ public class FifthFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
+            case R.id.tv_register:
                 FragmentTransaction ft =getActivity().getSupportFragmentManager().beginTransaction();
                 Fragment prev = getActivity().getSupportFragmentManager().findFragmentByTag("dialog");
                 if (prev != null) {
