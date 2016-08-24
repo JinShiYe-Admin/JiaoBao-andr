@@ -11,4 +11,6 @@
     <string name="third">third</string>
     <string name="fourth">fourth</string>
     <string name="fifth">fifth</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
 </resources>
