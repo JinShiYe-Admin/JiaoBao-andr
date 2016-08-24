@@ -9,8 +9,8 @@
 
     <com.pkmmte.view.CircularImageView
         android:id="@+id/imageView"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center_horizontal"
         android:padding="8dp" />
 
