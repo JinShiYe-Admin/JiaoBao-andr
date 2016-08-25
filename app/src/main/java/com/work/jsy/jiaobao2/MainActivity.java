@@ -10,8 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 import com.work.jsy.jiaobao2.adapters.MainViewPagertAdapter;
 import com.work.jsy.jiaobao2.fragments.FifthFragment;
@@ -19,6 +19,7 @@ import com.work.jsy.jiaobao2.fragments.FirstFragment;
 import com.work.jsy.jiaobao2.fragments.ForthFragment;
 import com.work.jsy.jiaobao2.fragments.SecondFragment;
 import com.work.jsy.jiaobao2.fragments.ThirdFragment;
+import com.work.jsy.jiaobao2.util.KeyBoardUtil;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -134,5 +135,10 @@ public class MainActivity extends AppCompatActivity
         adapter.addTitle(tv_fifth, FifthFragment.class, null);
         adapter.notifyDataSetChanged();
         tv_first.setChecked(true);
+    }
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        KeyBoardUtil.ShouldHideKeyboard(this, ev);
+        return super.dispatchTouchEvent(ev);
     }
 }

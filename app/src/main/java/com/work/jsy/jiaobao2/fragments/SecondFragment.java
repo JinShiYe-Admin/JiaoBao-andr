@@ -48,4 +48,5 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
         // Create and show the dialog.
         LoginDialogFragment.getNewInstance().show(ft,"dialog");
     }
+
 }

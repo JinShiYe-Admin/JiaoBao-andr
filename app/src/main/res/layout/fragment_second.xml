@@ -1,21 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="This is the hint" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
     <com.pkmmte.view.CircularImageView
         android:id="@+id/imageView"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:src="@drawable/ic_clear_black_48dp"/>
+        android:src="@drawable/ic_clear_black_48dp" />
+
     <com.pkmmte.view.CircularImageView
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:src="@drawable/meinv"/>
+        android:src="@drawable/meinv" />
+
     <Button
         android:id="@+id/login_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="登陆"/>
+        android:text="登陆" />
 
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="password" />
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 </LinearLayout>
