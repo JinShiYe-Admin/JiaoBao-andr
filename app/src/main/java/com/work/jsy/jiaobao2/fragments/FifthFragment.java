@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.pkmmte.view.CircularImageView;
 import com.work.jsy.jiaobao2.R;
 import com.work.jsy.jiaobao2.adapters.ForthRecyclerViewAdapter;
@@ -52,6 +53,7 @@ public class FifthFragment extends Fragment implements View.OnClickListener {
         setRecyclerView(recyclerView);
         tv_login.setOnClickListener(this);
         tv_register.setOnClickListener(this);
+        Glide.with(this).load(R.drawable.meinv).into(circularImageView);
     }
 
     private void setRecyclerView(RecyclerView recyclerView) {
