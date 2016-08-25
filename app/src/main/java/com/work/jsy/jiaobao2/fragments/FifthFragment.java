@@ -36,6 +36,7 @@ public class FifthFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getActivity().findViewById(R.id.toolbar).setVisibility(View.GONE);
         findViews();
     }
 
