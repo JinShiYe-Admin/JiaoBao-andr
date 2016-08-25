@@ -47,13 +47,12 @@ public class FifthFragment extends Fragment implements View.OnClickListener {
         Button btn_right = (Button) mView.findViewById(R.id.btn_right);//登录后右侧按钮
         RecyclerView recyclerView = (RecyclerView) mView.findViewById(R.id.recyclerView);//底部按钮区域
         CircularImageView circularImageView = (CircularImageView) mView.findViewById(R.id.circularImageView);//个人头像
-        circularImageView.setImageResource(R.drawable.meinv);
         //btn_left.setVisibility(View.VISIBLE);
         //btn_right.setVisibility(View.VISIBLE);
         setRecyclerView(recyclerView);
         tv_login.setOnClickListener(this);
         tv_register.setOnClickListener(this);
-        Glide.with(this).load(R.drawable.meinv).into(circularImageView);
+        Glide.with(this).load(R.drawable.girl).into(circularImageView);
     }
 
     private void setRecyclerView(RecyclerView recyclerView) {

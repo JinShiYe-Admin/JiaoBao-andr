@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pkmmte.view.CircularImageView;
 import com.work.jsy.jiaobao2.R;
@@ -40,7 +41,7 @@ public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecycler
     public void onBindViewHolder(FirstRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.mTextView.setText(mArrayMap.keyAt(position));
         holder.mImageView.setImageResource(mArrayMap.valueAt(position));
-        holder.mLinearLayout.setTag(position);
+        holder.mLinearLayout.setTag(mArrayMap.keyAt(position));
         holder.mLinearLayout.setOnClickListener(this);
     }
 
@@ -70,15 +71,16 @@ public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecycler
      */
     @Override
     public void onClick(View view) {
-        switch ((int) view.getTag()) {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            default:
-                break;
-        }
+//        switch ((int) view.getTag()) {
+//            case 0:
+//                break;
+//            case 1:
+//                break;
+//            case 2:
+//                break;
+//            default:
+//                break;
+//        }
+        Toast.makeText(mContext,(int) view.getTag(),Toast.LENGTH_SHORT).show();
     }
 }
