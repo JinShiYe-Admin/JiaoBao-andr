@@ -13,4 +13,15 @@
     <string name="fifth">fifth</string>
     <string name="login">登录</string>
     <string name="register">注册</string>
+    <!--国家-->
+    <string name="China">中国</string>
+    <string name="America">美国</string>
+    <string name="England">英国</string>
+    <string name="Germany">德国</string>
+    <string name="Russia">俄罗斯</string>
+    <string name="France">法国</string>
+    <string name="Japan">日本</string>
+
+    <string name="more">更多</string>
+
 </resources>

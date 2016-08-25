@@ -31,7 +31,7 @@ public class ForthRecyclerViewAdapter extends RecyclerView.Adapter<ForthRecycler
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 3;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

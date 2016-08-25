@@ -2,17 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card"
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardBackgroundColor="#303069"
         card_view:cardCornerRadius="10dp"
         card_view:cardPreventCornerOverlap="true"
-        card_view:cardUseCompatPadding="true"
-        card_view:contentPadding="10dp">
+        card_view:cardUseCompatPadding="true">
 
         <ImageView
             android:id="@+id/imageView"
@@ -23,8 +25,10 @@
             android:id="@+id/textView_first"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:paddingLeft="20dp"
             android:text="我是textView_first"
-            android:textColor="#fff" />
+            android:textColor="#FFFFFF" />
 
     </android.support.v7.widget.CardView>
 
@@ -32,6 +36,7 @@
         android:id="@+id/textView_second"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="我是textView_second" />
+        android:text="我是textView_second"
+        android:paddingLeft="10dp"/>
 
 </LinearLayout>

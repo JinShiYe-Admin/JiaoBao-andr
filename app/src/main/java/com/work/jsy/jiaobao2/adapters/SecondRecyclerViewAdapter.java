@@ -18,9 +18,9 @@ import com.work.jsy.jiaobao2.R;
  */
 public class SecondRecyclerViewAdapter extends RecyclerView.Adapter<SecondRecyclerViewAdapter.ViewHolder> implements View.OnClickListener {
     private Context mContext;
-    private ArrayMap<Integer, Integer> mArrayMap;
+    private ArrayMap<String, String> mArrayMap;
 
-    public void setArrayMap(ArrayMap<Integer, Integer> arrayMap) {
+    public void setArrayMap(ArrayMap<String, String> arrayMap) {
         mArrayMap = arrayMap;
     }
 
@@ -37,7 +37,7 @@ public class SecondRecyclerViewAdapter extends RecyclerView.Adapter<SecondRecycl
     @Override
     public void onBindViewHolder(SecondRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.tv_mFirst.setText(mArrayMap.keyAt(position));
-        holder.tv_mMore.setTag(mArrayMap.keyAt(position));
+        holder.tv_mMore.setTag(mArrayMap.valueAt(position));
         holder.tv_mMore.setOnClickListener(this);
         setRecyclerView(holder.recyclerView);
     }
@@ -49,7 +49,7 @@ public class SecondRecyclerViewAdapter extends RecyclerView.Adapter<SecondRecycl
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(mContext, (int) view.getTag() + "更多", Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, (String) view.getTag(), Toast.LENGTH_SHORT).show();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -75,10 +75,10 @@ public class SecondRecyclerViewAdapter extends RecyclerView.Adapter<SecondRecycl
 
     private void initAdapterData(ThirdRecyclerViewAdapter viewAdapter) {
         ArrayMap<Integer, Integer> arrayMap = new ArrayMap<>();
-        arrayMap.put(R.string.first, R.drawable.my);
-        arrayMap.put(R.string.second, R.drawable.my);
-        arrayMap.put(R.string.third, R.drawable.my);
-        arrayMap.put(R.string.fourth, R.drawable.my);
+        arrayMap.put(R.string.first, R.drawable.meinv);
+        arrayMap.put(R.string.second, R.drawable.meinv);
+        arrayMap.put(R.string.third, R.drawable.meinv);
+        arrayMap.put(R.string.fourth, R.drawable.meinv);
         viewAdapter.setArrayMap(arrayMap);
         viewAdapter.notifyDataSetChanged();
     }

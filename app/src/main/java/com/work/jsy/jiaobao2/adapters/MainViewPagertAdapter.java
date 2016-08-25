@@ -1,6 +1,7 @@
 package com.work.jsy.jiaobao2.adapters;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 
+import com.work.jsy.jiaobao2.R;
+
 import java.util.ArrayList;
 
 /**
@@ -18,11 +21,12 @@ import java.util.ArrayList;
  * Created by admin on 2016/8/3.
  */
 public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener, View.OnClickListener {
-    private final static String TAG="MainViewPagertAdapter";
+    private final static String TAG = "MainViewPagertAdapter";
     private Context mContext;
     private ViewPager mViewPager;
-    private ArrayList<RadioButton> mArrayList=new ArrayList<>();
+    private ArrayList<RadioButton> mArrayList = new ArrayList<>();
     private ArrayList<FragmentInfo> mFragmentInfos = new ArrayList<>();
+
     public MainViewPagertAdapter(AppCompatActivity activity, ViewPager viewPager) {
         super(activity.getSupportFragmentManager());
         mContext = activity;
@@ -52,15 +56,15 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
     }
 
 
-
     @Override
     public void onClick(View view) {
         if (mFragmentInfos != null && mFragmentInfos.size() > 0) {
-            FragmentInfo tag = (FragmentInfo)view.getTag();
-            Log.d(TAG,tag.clss.getName());
+            FragmentInfo tag = (FragmentInfo) view.getTag();
+            Log.d(TAG, tag.clss.getName());
             for (int i = 0; i < mFragmentInfos.size(); i++) {
-                if (mFragmentInfos.get(i).clss.getName() .equals(tag.clss.getName())) {
+                if (mFragmentInfos.get(i).clss.getName().equals(tag.clss.getName())) {
                     mViewPager.setCurrentItem(i);
+                    setVisibility(i);
                 }
             }
         }
@@ -71,7 +75,8 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
         if (mFragmentInfos != null && mFragmentInfos.size() > 0) {
             FragmentInfo fragmentInfo = mFragmentInfos.get(position);
             Fragment fragment = Fragment.instantiate(mContext, fragmentInfo.clss.getName(), fragmentInfo.args);
-            Log.d(TAG,fragmentInfo.clss.getName());
+            Log.d(TAG, fragmentInfo.clss.getName());
+            setVisibility(position - 1);
             return fragment;
         } else {
             return null;
@@ -91,10 +96,22 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
     @Override
     public void onPageSelected(int position) {
         mArrayList.get(position).setChecked(true);
+        setVisibility(position);
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    /**
+     * 只有在FirstFragment时显示ToolBar，其他页面隐藏ToolBar
+     */
+    private void setVisibility(int position) {
+        if (position == 0) {
+            ((Activity) mContext).findViewById(R.id.toolbar).setVisibility(View.VISIBLE);
+        } else {
+            ((Activity) mContext).findViewById(R.id.toolbar).setVisibility(View.GONE);
+        }
     }
 }
