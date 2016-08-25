@@ -40,6 +40,9 @@ public class LoginDialogFragment extends DialogFragment implements View.OnClickL
         initViews();
     }
 
+    /**
+     * 控件绑定监听事件
+     */
     private void initViews() {
         mView.findViewById(R.id.img_cancel).setOnClickListener(this);
         mView.findViewById(R.id.register_weiXin).setOnClickListener(this);
@@ -51,14 +54,19 @@ public class LoginDialogFragment extends DialogFragment implements View.OnClickL
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            //微信登录
             case R.id.register_weiXin:
                 break;
+            //qq登录
             case R.id.register_qq:
                 break;
+            //教宝登录
             case R.id.login_self:
                 break;
+            //教宝注册
             case R.id.register_self:
                 break;
+            //取消按钮
             case R.id.img_cancel:
                 dismiss();
                 break;
