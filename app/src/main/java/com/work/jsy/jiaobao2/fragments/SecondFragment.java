@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.pkmmte.view.CircularImageView;
 import com.work.jsy.jiaobao2.R;
+import com.work.jsy.jiaobao2.util.GlideCircleImage;
 
 /**
  * Created by admin on 2016/8/3.
@@ -31,9 +33,13 @@ public class SecondFragment extends Fragment implements View.OnClickListener {
         findViews();
     }
     private void findViews(){
-        ImageView imageView=(ImageView)mView.findViewById(R.id.imageView);
+        String url="http://imgstore04.cdn.sogou.com/app/a/100520024/877e990117d6a7ebc68f46c5e76fc47a";
+        CircularImageView circularImageView_first=(CircularImageView)mView.findViewById(R.id.imageView);
+        ImageView imageView_second=(ImageView)mView.findViewById(R.id.ImageView_second);
         mView.findViewById(R.id.login_view).setOnClickListener(this);
-        Glide.with(this).load("http://imgstore04.cdn.sogou.com/app/a/100520024/877e990117d6a7ebc68f46c5e76fc47a").into(imageView);
+        Glide.with(this).load(url).placeholder(R.drawable.my).into(circularImageView_first);
+        Glide.with(this).load(url).transform(new GlideCircleImage(getActivity())).placeholder(R.drawable.my).into(imageView_second);
+
     }
 
     @Override
