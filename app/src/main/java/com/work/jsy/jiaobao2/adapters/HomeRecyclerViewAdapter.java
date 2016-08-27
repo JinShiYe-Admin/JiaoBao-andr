@@ -3,7 +3,6 @@ package com.work.jsy.jiaobao2.adapters;
 import android.content.Context;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -132,7 +131,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
      * 加载Adapter
      */
     private void setRecyclerViewSecond(RecyclerView recyclerViewSecond) {
-        recyclerViewSecond.setLayoutManager(new GridLayoutManager(mContext, 1));//设置布局管理器
+        recyclerViewSecond.setLayoutManager(new LinearLayoutManager(mContext));//设置布局管理器
         recyclerViewSecond.setItemAnimator(new DefaultItemAnimator());
         recyclerViewSecond.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));//设置分割线
         SecondRecyclerViewAdapter viewAdapter = new SecondRecyclerViewAdapter(mContext);
