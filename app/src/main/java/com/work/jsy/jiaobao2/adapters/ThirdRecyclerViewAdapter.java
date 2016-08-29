@@ -44,7 +44,7 @@ public class ThirdRecyclerViewAdapter extends RecyclerView.Adapter<ThirdRecycler
 
     @Override
     public int getItemCount() {
-        return mArrayMap == null ? 0 : mArrayMap.size();
+        return mArrayMap.valueAt(0);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
