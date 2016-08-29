@@ -3,7 +3,6 @@ package com.work.jsy.jiaobao2.util;
 import android.app.Activity;
 import android.content.Context;
 import android.os.IBinder;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -48,14 +47,14 @@ public class KeyBoardUtil {
             if (event.getRawX() > left && event.getRawX() < right
                     && event.getRawY() > top && event.getRawY() < bottom) {
                 // 点击EditText的事件，忽略它。
-                Log.i("v instanceof EditText", "false");
+                //Log.i("v instanceof EditText", "false");
                 return false;
             } else {
-                Log.i("v instanceof EditText", "true");
+                //Log.i("v instanceof EditText", "true");
                 return true;
             }
         }
-        Log.i("isShouldHideKeyboard", "false");
+        //Log.i("isShouldHideKeyboard", "false");
         // 如果焦点不是EditText则忽略，这个发生在视图刚绘制完，第一个焦点不在EditText上，和用户用轨迹球选择其他的焦点
         return false;
     }

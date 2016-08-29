@@ -53,7 +53,7 @@ public class FifthFragment extends Fragment implements View.OnClickListener {
         setRecyclerView(recyclerView);
         tv_login.setOnClickListener(this);
         tv_register.setOnClickListener(this);
-        Glide.with(this).load(R.drawable.girl).into(circularImageView);
+        Glide.with(this).load(R.drawable.meinv).into(circularImageView);
     }
 
     private void setRecyclerView(RecyclerView recyclerView) {
