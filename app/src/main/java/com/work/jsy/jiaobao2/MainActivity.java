@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity
         adapter.addTitle(tv_first, FirstFragment.class, null);
         adapter.addTitle(tv_sec, SecondFragment.class, null);
         adapter.addTitle(tv_third, ThirdFragment.class, null);
-        adapter.addTitle(tv_fourth, ForthFragment.class, null);
+        adapter.addTitle(tv_fourth,ForthFragment.class, null);
         adapter.addTitle(tv_fifth, FifthFragment.class, null);
         adapter.notifyDataSetChanged();
         tv_first.setChecked(true);

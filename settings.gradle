@@ -1,1 +1,1 @@
-include ':app', ':qupai', ':httplib', ':circle'
+include ':app'
