@@ -47,15 +47,15 @@ import com.yiw.qupai.result.RecordResult;
 import java.util.List;
 /**
  * 
-* @ClassName: MainActivity 
+* @ClassName: FriendActivity
 * @Description: TODO(这里用一句话描述这个类的作用) 
 * @author yiw
 * @date 2015-12-28 下午4:21:18 
 *
  */
-public class MainActivity extends Activity implements CircleContract.View{
+public class FriendFragment extends Activity implements CircleContract.View{
 
-	protected static final String TAG = MainActivity.class.getSimpleName();
+	protected static final String TAG = FriendFragment.class.getSimpleName();
 	private CircleAdapter circleAdapter;
 	private LinearLayout edittextbody;
 	private EditText editText;
@@ -137,14 +137,14 @@ public class MainActivity extends Activity implements CircleContract.View{
 			@Override
 			public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
 				super.onScrolled(recyclerView, dx, dy);
-				Glide.with(MainActivity.this).resumeRequests();
+				Glide.with(FriendFragment.this).resumeRequests();
 			}
 
 			@Override
 			public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
 				super.onScrollStateChanged(recyclerView, newState);
 				if(newState != RecyclerView.SCROLL_STATE_IDLE){
-					Glide.with(MainActivity.this).pauseRequests();
+					Glide.with(FriendFragment.this).pauseRequests();
 				}
 
 			}
@@ -165,7 +165,7 @@ public class MainActivity extends Activity implements CircleContract.View{
 					//发布评论
 					String content =  editText.getText().toString().trim();
 					if(TextUtils.isEmpty(content)){
-						Toast.makeText(MainActivity.this, "评论内容不能为空...", Toast.LENGTH_SHORT).show();
+						Toast.makeText(FriendFragment.this, "评论内容不能为空...", Toast.LENGTH_SHORT).show();
 						return;
 					}
 					presenter.addComment(content, commentConfig);
@@ -191,9 +191,9 @@ public class MainActivity extends Activity implements CircleContract.View{
         TextView textView = (TextView) titleBar.addAction(new TitleBar.TextAction("发布视频") {
             @Override
             public void performAction(View view) {
-                //Toast.makeText(MainActivity.this, "敬请期待...", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Fr.this, "敬请期待...", Toast.LENGTH_SHORT).show();
 
-				QPManager.startRecordActivity(MainActivity.this);
+				QPManager.startRecordActivity(FriendFragment.this);
             }
         });
         textView.setTextColor(getResources().getColor(R.color.white));
@@ -453,7 +453,7 @@ public class MainActivity extends Activity implements CircleContract.View{
                 @Override
                 public void uploadComplet(String videoUrl, String imageUrl, String message) {
                     uploadDialog.hide();
-                    Toast.makeText(MainActivity.this, "上传成功...", Toast.LENGTH_LONG).show();
+                    Toast.makeText(FriendFragment.this, "上传成功...", Toast.LENGTH_LONG).show();
 
                     //将新拍摄的video刷新到列表中
                     circleAdapter.getDatas().add(0, DatasUtil.createVideoItem(videoFile, thum[0]));
@@ -466,7 +466,7 @@ public class MainActivity extends Activity implements CircleContract.View{
                         @Override
                         public void run() {
                             uploadDialog.hide();
-                            Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
+                            Toast.makeText(FriendFragment.this, message, Toast.LENGTH_LONG).show();
                         }
                     });
                 }
@@ -482,12 +482,12 @@ public class MainActivity extends Activity implements CircleContract.View{
 			 * 上面的拷贝操作请自行实现，第一版本的copyVideoFile接口不再使用
 			 */
             /*QupaiService qupaiService = QupaiManager
-                    .getQupaiService(MainActivity.this);
+                    .getQupaiService(Fr.this);
             qupaiService.deleteDraft(getApplicationContext(),data);*/
 
 		} else {
 			if (resultCode == RESULT_CANCELED) {
-				Toast.makeText(MainActivity.this, "RESULT_CANCELED", Toast.LENGTH_LONG).show();
+				Toast.makeText(FriendFragment.this, "RESULT_CANCELED", Toast.LENGTH_LONG).show();
 			}
 		}
 	}
