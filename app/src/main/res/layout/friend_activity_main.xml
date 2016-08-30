@@ -5,7 +5,7 @@
     android:background="@color/color_aeaeae"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".circledemo.activity.FriendActivity" >
+    tools:context=".circledemo.activity.FriendFragment" >
 
     <include layout="@layout/friend_layout_main_titlebar"/>
 

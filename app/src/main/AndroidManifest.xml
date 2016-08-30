@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".circledemo.activity.FriendActivity">
+        <activity android:name=".circledemo.activity.FriendFragment">
 
         </activity>
         <activity android:name=".circledemo.activity.ImagePagerActivity"/>

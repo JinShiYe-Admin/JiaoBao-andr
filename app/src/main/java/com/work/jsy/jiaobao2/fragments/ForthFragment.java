@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.work.jsy.jiaobao2.R;
-import com.work.jsy.jiaobao2.circledemo.activity.FriendActivity;
+import com.work.jsy.jiaobao2.circledemo.activity.FriendFragment;
 
 
 /**
@@ -38,7 +38,7 @@ public class ForthFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), FriendActivity.class);
+                Intent intent=new Intent(getActivity(), FriendFragment.class);
                 startActivity(intent);
             }
         });

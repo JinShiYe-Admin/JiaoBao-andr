@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.widget.RadioButton;
 
 import com.work.jsy.jiaobao2.adapters.MainViewPagertAdapter;
+import com.work.jsy.jiaobao2.circledemo.activity.FriendFragment;
 import com.work.jsy.jiaobao2.fragments.FifthFragment;
 import com.work.jsy.jiaobao2.fragments.FirstFragment;
 import com.work.jsy.jiaobao2.fragments.ForthFragment;
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity
         adapter.addTitle(tv_first, FirstFragment.class, null);
         adapter.addTitle(tv_sec, SecondFragment.class, null);
         adapter.addTitle(tv_third, ThirdFragment.class, null);
-        adapter.addTitle(tv_fourth,ForthFragment.class, null);
+        adapter.addTitle(tv_fourth, FriendFragment.class, null);
         adapter.addTitle(tv_fifth, FifthFragment.class, null);
         adapter.notifyDataSetChanged();
         tv_first.setChecked(true);
