@@ -40,15 +40,9 @@ import com.work.jsy.jiaobao2.circledemo.widgets.CommentListView;
 import com.work.jsy.jiaobao2.circledemo.widgets.DivItemDecoration;
 import com.work.jsy.jiaobao2.circledemo.widgets.TitleBar;
 import com.work.jsy.jiaobao2.circledemo.widgets.dialog.UpLoadDialog;
-import com.yiw.qupai.QPManager;
-import com.yiw.qupai.listener.IUploadListener;
-import com.yiw.qupai.result.RecordResult;
 
 import java.util.List;
 
-//import com.yiw.qupai.QPManager;
-//import com.yiw.qupai.listener.IUploadListener;
-//import com.yiw.qupai.result.RecordResult;
 /**
  * 
 * @ClassName: FriendActivity
@@ -197,7 +191,7 @@ public class FriendActivity extends Activity implements CircleContract.View{
             public void performAction(View view) {
                 //Toast.makeText(MainActivity.this, "敬请期待...", Toast.LENGTH_SHORT).show();
 
-				QPManager.startRecordActivity(FriendActivity.this);
+//				QPManager.startRecordActivity(FriendActivity.this);
             }
         });
         textView.setTextColor(getResources().getColor(R.color.white));
@@ -436,65 +430,65 @@ public class FriendActivity extends Activity implements CircleContract.View{
 
     String videoFile;
     String [] thum;
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-		if (resultCode == RESULT_OK) {
-			RecordResult result =new RecordResult(data);
-			//得到视频地址，和缩略图地址的数组，返回十张缩略图
-			videoFile = result.getPath();
-			thum = result.getThumbnail();
-			result.getDuration();
-
-            Log.e(TAG, "视频路径:" + videoFile + "图片路径:" + thum[0]);
-
-			QPManager.getInstance(getApplicationContext()).startUpload(videoFile, thum[0], new IUploadListener() {
-                @Override
-                public void preUpload() {
-                    uploadDialog.show();
-                }
-
-                @Override
-                public void uploadComplet(String videoUrl, String imageUrl, String message) {
-                    uploadDialog.hide();
-                    Toast.makeText(FriendActivity.this, "上传成功...", Toast.LENGTH_LONG).show();
-
-                    //将新拍摄的video刷新到列表中
-                    circleAdapter.getDatas().add(0, DatasUtil.createVideoItem(videoFile, thum[0]));
-                    circleAdapter.notifyDataSetChanged();
-                }
-
-                @Override
-                public void uploadError(int errorCode, final String message) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            uploadDialog.hide();
-                            Toast.makeText(FriendActivity.this, message, Toast.LENGTH_LONG).show();
-                        }
-                    });
-                }
-
-                @Override
-                public void uploadProgress(int percentsProgress) {
-                    uploadDialog.setPercentsProgress(percentsProgress);
-                }
-            });
-
-			/**
-			 * 清除草稿,草稿文件将会删除。所以在这之前我们执行拷贝move操作。
-			 * 上面的拷贝操作请自行实现，第一版本的copyVideoFile接口不再使用
-			 */
-            /*QupaiService qupaiService = QupaiManager
-                    .getQupaiService(MainActivity.this);
-            qupaiService.deleteDraft(getApplicationContext(),data);*/
-
-		} else {
-			if (resultCode == RESULT_CANCELED) {
-				Toast.makeText(FriendActivity.this, "RESULT_CANCELED", Toast.LENGTH_LONG).show();
-			}
-		}
-	}
+//	@Override
+//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//
+//		if (resultCode == RESULT_OK) {
+//			RecordResult result =new RecordResult(data);
+//			//得到视频地址，和缩略图地址的数组，返回十张缩略图
+//			videoFile = result.getPath();
+//			thum = result.getThumbnail();
+//			result.getDuration();
+//
+//            Log.e(TAG, "视频路径:" + videoFile + "图片路径:" + thum[0]);
+//
+//			QPManager.getInstance(getApplicationContext()).startUpload(videoFile, thum[0], new IUploadListener() {
+//                @Override
+//                public void preUpload() {
+//                    uploadDialog.show();
+//                }
+//
+//                @Override
+//                public void uploadComplet(String videoUrl, String imageUrl, String message) {
+//                    uploadDialog.hide();
+//                    Toast.makeText(FriendActivity.this, "上传成功...", Toast.LENGTH_LONG).show();
+//
+//                    //将新拍摄的video刷新到列表中
+//                    circleAdapter.getDatas().add(0, DatasUtil.createVideoItem(videoFile, thum[0]));
+//                    circleAdapter.notifyDataSetChanged();
+//                }
+//
+//                @Override
+//                public void uploadError(int errorCode, final String message) {
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            uploadDialog.hide();
+//                            Toast.makeText(FriendActivity.this, message, Toast.LENGTH_LONG).show();
+//                        }
+//                    });
+//                }
+//
+//                @Override
+//                public void uploadProgress(int percentsProgress) {
+//                    uploadDialog.setPercentsProgress(percentsProgress);
+//                }
+//            });
+//
+//			/**
+//			 * 清除草稿,草稿文件将会删除。所以在这之前我们执行拷贝move操作。
+//			 * 上面的拷贝操作请自行实现，第一版本的copyVideoFile接口不再使用
+//			 */
+//            /*QupaiService qupaiService = QupaiManager
+//                    .getQupaiService(MainActivity.this);
+//            qupaiService.deleteDraft(getApplicationContext(),data);*/
+//
+//		} else {
+//			if (resultCode == RESULT_CANCELED) {
+//				Toast.makeText(FriendActivity.this, "RESULT_CANCELED", Toast.LENGTH_LONG).show();
+//			}
+//		}
+//	}
 
 	@Override
 	public void showLoading(String msg) {

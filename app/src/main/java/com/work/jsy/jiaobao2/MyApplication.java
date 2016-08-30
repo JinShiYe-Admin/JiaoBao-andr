@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
-import com.yiw.qupai.QPManager;
+
 
 import java.io.File;
 
@@ -31,7 +31,7 @@ public class MyApplication extends Application {
 		//mContext = getApplicationContext();
 		Log.i("MyApplication",MyApplication.getContext()+"");
 		//LeakCanary.install(this);
-        QPManager.getInstance(mContext).initRecord();
+//        QPManager.getInstance(mContext).initRecord();
 	}
 
 	public static Context getContext(){
