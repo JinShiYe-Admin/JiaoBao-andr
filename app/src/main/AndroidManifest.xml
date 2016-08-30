@@ -25,6 +25,7 @@
         <activity android:name=".circledemo.activity.FriendActivity">
 
         </activity>
+        <activity android:name=".circledemo.activity.ImagePagerActivity"/>
     </application>
 
 </manifest>
