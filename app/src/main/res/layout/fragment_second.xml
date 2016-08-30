@@ -16,7 +16,7 @@
             android:hint="This is the hint" />
     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
-    <com.pkmmte.view.CircularImageView
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="180dp"
         android:layout_height="180dp"

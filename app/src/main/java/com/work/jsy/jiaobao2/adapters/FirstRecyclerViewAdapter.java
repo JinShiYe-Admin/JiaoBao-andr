@@ -7,11 +7,12 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.pkmmte.view.CircularImageView;
+
 import com.work.jsy.jiaobao2.R;
 
 
@@ -52,13 +53,13 @@ public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecycler
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private LinearLayout mLinearLayout;//图标区域
-        private CircularImageView mImageView;//图标
+        private ImageView mImageView;//图标
         private TextView mTextView;//图标下的文字
 
         public ViewHolder(View itemView) {
             super(itemView);
             mLinearLayout = (LinearLayout) itemView.findViewById(R.id.item_linearLayout);
-            mImageView = (CircularImageView) itemView.findViewById(R.id.imageView);
+            mImageView = (ImageView) itemView.findViewById(R.id.imageView);
             mTextView = (TextView) itemView.findViewById(R.id.textView);
             DisplayMetrics displayMetrics = mContext.getResources().getDisplayMetrics();
             int width = displayMetrics.widthPixels;

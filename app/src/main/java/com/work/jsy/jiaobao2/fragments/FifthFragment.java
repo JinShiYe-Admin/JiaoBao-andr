@@ -11,10 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.pkmmte.view.CircularImageView;
+
 import com.work.jsy.jiaobao2.R;
 import com.work.jsy.jiaobao2.adapters.ForthRecyclerViewAdapter;
 import com.work.jsy.jiaobao2.util.DividerItemDecoration;
@@ -47,7 +48,7 @@ public class FifthFragment extends Fragment implements View.OnClickListener {
         Button btn_left = (Button) mView.findViewById(R.id.btn_left);//登录后左侧按钮
         Button btn_right = (Button) mView.findViewById(R.id.btn_right);//登录后右侧按钮
         RecyclerView recyclerView = (RecyclerView) mView.findViewById(R.id.recyclerView);//底部按钮区域
-        CircularImageView circularImageView = (CircularImageView) mView.findViewById(R.id.circularImageView);//个人头像
+        ImageView circularImageView = (ImageView) mView.findViewById(R.id.circularImageView);//个人头像
         //btn_left.setVisibility(View.VISIBLE);
         //btn_right.setVisibility(View.VISIBLE);
         setRecyclerView(recyclerView);

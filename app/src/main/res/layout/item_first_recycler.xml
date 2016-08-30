@@ -6,16 +6,16 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.pkmmte.view.CircularImageView
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/meinv"
-        android:padding="8dp"
-        app:border="true"
-        app:border_color="#FFFFFF"
-        app:border_width="3dp" />
+        android:padding="8dp"/>
+        <!--app:border="true"-->
+        <!--app:border_color="#FFFFFF"-->
+        <!--app:border_width="3dp" />-->
 
     <TextView
         android:id="@+id/textView"
