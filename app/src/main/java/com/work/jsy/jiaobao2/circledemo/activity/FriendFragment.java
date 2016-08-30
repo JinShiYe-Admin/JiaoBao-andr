@@ -74,17 +74,6 @@ public class FriendFragment extends Fragment implements CircleContract.View {
     private View mView;
 
 
-//    @Override
-//	protected void onCreate(Bundle savedInstanceState) {
-//		super.onCreate(savedInstanceState);
-//		setContentView(R.layout.friend_activity_main);
-//		presenter = new CirclePresenter(this);
-//		initView();
-//
-//        presenter.loadData(TYPE_PULLREFRESH);
-//	}
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -119,7 +108,6 @@ public class FriendFragment extends Fragment implements CircleContract.View {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new DivItemDecoration(2, true));
         recyclerView.getMoreProgressView().getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
-
         recyclerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -196,8 +184,8 @@ public class FriendFragment extends Fragment implements CircleContract.View {
 
         titleBar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         titleBar.setTitle("朋友圈");
-        titleBar.setTitleTextColor(getResources().getColor(R.color.white));
-        titleBar.setBackgroundColor(getResources().getColor(R.color.title_bg));
+//        titleBar.setTitleTextColor(getResources().getColor(R.color.white));
+
 
 //        TextView textView = (TextView) titleBar.addAction(new TitleBar.TextAction("发布视频") {
 //            @Override

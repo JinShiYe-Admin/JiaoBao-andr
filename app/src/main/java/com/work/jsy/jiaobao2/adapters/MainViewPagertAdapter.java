@@ -108,7 +108,7 @@ public class MainViewPagertAdapter extends FragmentPagerAdapter implements ViewP
      * 只有在FirstFragment时显示ToolBar，其他页面隐藏ToolBar
      */
     private void setVisibility(int position) {
-        if (position == 0) {
+        if (position == 0||position==3) {
             ((Activity) mContext).findViewById(R.id.toolbar).setVisibility(View.VISIBLE);
         } else {
             ((Activity) mContext).findViewById(R.id.toolbar).setVisibility(View.GONE);
