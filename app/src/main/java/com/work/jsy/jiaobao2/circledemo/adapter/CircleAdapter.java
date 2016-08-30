@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.work.jsy.jiaobao2.R;
-import com.work.jsy.jiaobao2.circledemo.MyApplication;
+import com.work.jsy.jiaobao2.MyApplication;
 import com.work.jsy.jiaobao2.circledemo.activity.ImagePagerActivity;
 import com.work.jsy.jiaobao2.circledemo.adapter.viewholder.CircleViewHolder;
 import com.work.jsy.jiaobao2.circledemo.adapter.viewholder.ImageViewHolder;

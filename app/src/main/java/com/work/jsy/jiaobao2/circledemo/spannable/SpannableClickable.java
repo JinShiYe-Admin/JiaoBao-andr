@@ -5,7 +5,7 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 
 import com.work.jsy.jiaobao2.R;
-import com.work.jsy.jiaobao2.circledemo.MyApplication;
+import com.work.jsy.jiaobao2.MyApplication;
 
 
 /**

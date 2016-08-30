@@ -51,7 +51,7 @@ import java.util.List;
 //import com.yiw.qupai.result.RecordResult;
 /**
  * 
-* @ClassName: MainActivity
+* @ClassName: FriendActivity
 * @Description: TODO(这里用一句话描述这个类的作用) 
 * @author yiw
 * @date 2015-12-28 下午4:21:18 
@@ -59,7 +59,7 @@ import java.util.List;
  */
 public class FriendActivity extends Activity implements CircleContract.View{
 
-	protected static final String TAG = FriendActivity.class.getSimpleName();
+	protected static final String TAG = "FriendActivity";
 	private CircleAdapter circleAdapter;
 	private LinearLayout edittextbody;
 	private EditText editText;

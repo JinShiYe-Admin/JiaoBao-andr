@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 import android.widget.TextView;
 
 import com.work.jsy.jiaobao2.R;
-import com.work.jsy.jiaobao2.circledemo.MyApplication;
+import com.work.jsy.jiaobao2.MyApplication;
 
 
 /**

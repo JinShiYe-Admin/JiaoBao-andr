@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.work.jsy.jiaobao2.R;
-import com.work.jsy.jiaobao2.circledemo.MyApplication;
+import com.work.jsy.jiaobao2.MyApplication;
 import com.work.jsy.jiaobao2.circledemo.bean.FavortItem;
 import com.work.jsy.jiaobao2.circledemo.spannable.CircleMovementMethod;
 import com.work.jsy.jiaobao2.circledemo.spannable.SpannableClickable;
