@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class PraiseListView extends TextView{
 
-
+    private Context mContext;
     private int itemColor;
     private int itemSelectorColor;
     private List<FavortItem> datas;
@@ -41,16 +41,19 @@ public class PraiseListView extends TextView{
 
     public PraiseListView(Context context) {
         super(context);
+        mContext=context;
     }
 
     public PraiseListView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initAttrs(attrs);
+        mContext=context;
     }
 
     public PraiseListView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttrs(attrs);
+        mContext=context;
     }
 
     private void initAttrs(AttributeSet attrs) {

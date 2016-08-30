@@ -18,22 +18,25 @@ public class ExpandTextView extends LinearLayout {
     public static final int DEFAULT_MAX_LINES = 3;
     private TextView contentText;
     private TextView textPlus;
-
+    private Context mContext;
     private int showLines;
 
     public ExpandTextView(Context context) {
         super(context);
+        mContext=context;
         initView();
     }
 
     public ExpandTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mContext=context;
         initAttrs(attrs);
         initView();
     }
 
     public ExpandTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mContext=context;
         initAttrs(attrs);
         initView();
     }
