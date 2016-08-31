@@ -17,10 +17,8 @@ import com.work.jsy.jiaobao2.adapters.MainViewPagertAdapter;
 import com.work.jsy.jiaobao2.circledemo.activity.FriendFragment;
 import com.work.jsy.jiaobao2.fragments.FifthFragment;
 import com.work.jsy.jiaobao2.fragments.FirstFragment;
-import com.work.jsy.jiaobao2.fragments.ForthFragment;
 import com.work.jsy.jiaobao2.fragments.SecondFragment;
 import com.work.jsy.jiaobao2.fragments.ThirdFragment;
-import com.work.jsy.jiaobao2.util.KeyBoardUtil;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -139,7 +137,7 @@ public class MainActivity extends AppCompatActivity
     }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        KeyBoardUtil.ShouldHideKeyboard(this, ev);
+        //KeyBoardUtil.ShouldHideKeyboard(this, ev);
         return super.dispatchTouchEvent(ev);
     }
 }

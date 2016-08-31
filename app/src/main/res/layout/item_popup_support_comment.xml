@@ -2,21 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="#66000000"
     android:orientation="horizontal"
-    android:background="#AAAAAA" android:padding="5dp">
+    android:padding="5dp">
 
     <TextView
         android:id="@+id/tv_support"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:text="@string/support" />
+        android:text="@string/support"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/tv_comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-
-        android:text="@string/comment" />
+        android:text="@string/comment"
+        android:textColor="#FFFFFF" />
 </LinearLayout>
