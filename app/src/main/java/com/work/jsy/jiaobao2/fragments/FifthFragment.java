@@ -65,11 +65,9 @@ public class FifthFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
         if (circularImageView != null) {
             if (isVisibleToUser) {
-                circularImageView.setVisibility(View.INVISIBLE);
-                circularImageView.setVisibility(View.VISIBLE);
+                circularImageView.startAnimation(scaleAnimation);//绑定动画
             }
         }
     }
