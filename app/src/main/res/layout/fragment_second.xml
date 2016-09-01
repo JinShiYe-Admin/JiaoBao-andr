@@ -5,7 +5,18 @@
     android:layout_height="match_parent"
     xmlns:com.pkmmte.view="http://schemas.android.com/tools"
     android:orientation="vertical">
-
+    <Button android:id="@+id/btn_animation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:text="scale animation"/>
+    <ImageView
+        android:id="@+id/tv"
+        android:layout_width="100dip"
+        android:layout_height="200dip"
+        android:background="#ff00ff"
+        android:text="hello_world"
+        android:layout_gravity="center_horizontal"/>
     <com.wrapp.floatlabelededittext.FloatLabeledEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -42,4 +53,5 @@
             android:layout_height="wrap_content"
             android:hint="password" />
     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
 </LinearLayout>

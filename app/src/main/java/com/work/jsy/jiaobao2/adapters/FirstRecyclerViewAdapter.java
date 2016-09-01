@@ -13,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.bumptech.glide.Glide;
 import com.work.jsy.jiaobao2.R;
+import com.work.jsy.jiaobao2.util.GlideCircleImage;
 
 
 /**
@@ -41,9 +43,10 @@ public class FirstRecyclerViewAdapter extends RecyclerView.Adapter<FirstRecycler
     @Override
     public void onBindViewHolder(FirstRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.mTextView.setText(mArrayMap.keyAt(position));
-        holder.mImageView.setImageResource(mArrayMap.valueAt(position));
+        //holder.mImageView.setImageResource(mArrayMap.valueAt(position));
         holder.mLinearLayout.setTag(mArrayMap.keyAt(position));
         holder.mLinearLayout.setOnClickListener(this);
+        Glide.with(mContext).load(mArrayMap.valueAt(position)).transform(new GlideCircleImage(mContext)).placeholder(R.drawable.my).into(holder.mImageView);
     }
 
     @Override

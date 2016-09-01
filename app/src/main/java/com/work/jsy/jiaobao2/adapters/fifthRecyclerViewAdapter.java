@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.work.jsy.jiaobao2.R;
 
 /**
@@ -34,9 +33,8 @@ public class FifthRecyclerViewAdapter extends RecyclerView.Adapter<FifthRecycler
 
     @Override
     public void onBindViewHolder(FifthRecyclerViewAdapter.ViewHolder holder, int position) {
-        String url="http://img05.tooopen.com/images/20140919/sy_71272488121.jpg";
-        //holder.mImageView.setImageResource(R.drawable.meinv);
-        Glide.with(mContext).load(url).placeholder(R.drawable.my).into(holder.mImageView);
+        holder.mImageView.setImageResource(R.drawable.meinv);
+        //Glide.with(mContext).load(R.drawable.my).placeholder(R.drawable.my).into(holder.mImageView);
 
     }
 

@@ -15,10 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
 import com.work.jsy.jiaobao2.R;
 import com.work.jsy.jiaobao2.adapters.ForthRecyclerViewAdapter;
 import com.work.jsy.jiaobao2.util.DividerItemDecoration;
+import com.work.jsy.jiaobao2.util.GlideCircleImage;
 
 /**
  * FifthFragment界面
@@ -54,7 +54,7 @@ public class FifthFragment extends Fragment implements View.OnClickListener {
         setRecyclerView(recyclerView);
         tv_login.setOnClickListener(this);
         tv_register.setOnClickListener(this);
-        Glide.with(this).load(R.drawable.meinv).into(circularImageView);
+        Glide.with(this).load(R.drawable.meinv).transform(new GlideCircleImage(getActivity())).placeholder(R.drawable.my).into(circularImageView);
     }
 
     private void setRecyclerView(RecyclerView recyclerView) {

@@ -27,8 +27,8 @@
     </style>
     <!--friend-->
     <style name="social_pop_anim" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/friend_pop_enter_anim</item>
-        <item name="android:windowExitAnimation">@anim/friend_pop_exit_anim</item>
+        <item name="android:windowEnterAnimation">@anim/friend_pop_enter_anim</item>//进入时的动画
+        <item name="android:windowExitAnimation">@anim/friend_pop_exit_anim</item>//退出时的动画
     </style>
     <style name="comment_dialog" parent="android:Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
