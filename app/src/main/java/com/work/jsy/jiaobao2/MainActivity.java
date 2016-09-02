@@ -8,10 +8,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.ViewTreeObserver;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.work.jsy.jiaobao2.adapters.MainViewPagertAdapter;
 import com.work.jsy.jiaobao2.circledemo.activity.FriendFragment;
@@ -19,11 +22,15 @@ import com.work.jsy.jiaobao2.fragments.FifthFragment;
 import com.work.jsy.jiaobao2.fragments.FirstFragment;
 import com.work.jsy.jiaobao2.fragments.SecondFragment;
 import com.work.jsy.jiaobao2.fragments.ThirdFragment;
+import com.work.jsy.jiaobao2.util.KeyBoardUtil;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private final static String TAG="MainActivity";
     private RadioButton tv_first, tv_sec, tv_third, tv_fourth, tv_fifth;
     private ViewPager mViewPager;
+    public static int mBottomHeight;
+    private RadioGroup rg_bottom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initViews();
+        getBottomHeight();
+
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -49,6 +58,18 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void getBottomHeight() {
+        ViewTreeObserver vto = rg_bottom.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                rg_bottom.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                mBottomHeight=rg_bottom.getHeight();
+                Log.i(TAG+"height",mBottomHeight+"");
+            }
+        });
     }
 
     @Override
@@ -113,6 +134,7 @@ public class MainActivity extends AppCompatActivity
      * initViews
      */
     private void initViews() {
+        rg_bottom=(RadioGroup) findViewById(R.id.rg_bottom);
         tv_first = (RadioButton) findViewById(R.id.first);
         tv_sec = (RadioButton) findViewById(R.id.second);
         tv_third = (RadioButton) findViewById(R.id.third);
@@ -120,6 +142,7 @@ public class MainActivity extends AppCompatActivity
         tv_fifth = (RadioButton) findViewById(R.id.fifth);
         mViewPager = (ViewPager) findViewById(R.id.fragment_main);
         addFragments(mViewPager);
+
     }
 
     /**
@@ -137,7 +160,7 @@ public class MainActivity extends AppCompatActivity
     }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        //KeyBoardUtil.ShouldHideKeyboard(this, ev);
+        KeyBoardUtil.ShouldHideKeyboard(this, ev);
         return super.dispatchTouchEvent(ev);
     }
 }

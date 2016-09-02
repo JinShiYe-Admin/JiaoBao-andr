@@ -10,17 +10,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+
 import com.work.jsy.jiaobao2.R;
 import com.work.jsy.jiaobao2.adapters.ForthRecyclerViewAdapter;
 import com.work.jsy.jiaobao2.util.DividerItemDecoration;
-import com.work.jsy.jiaobao2.util.GlideCircleImage;
 
 /**
  * FifthFragment界面
@@ -29,8 +27,6 @@ import com.work.jsy.jiaobao2.util.GlideCircleImage;
 public class FifthFragment extends Fragment implements View.OnClickListener {
     final static String TAG = "FirstFragment";
     private View mView;
-    private Animation scaleAnimation;//动画效果
-    private ImageView circularImageView;//个人头像
 
     @Nullable
     @Override
@@ -52,24 +48,13 @@ public class FifthFragment extends Fragment implements View.OnClickListener {
         Button btn_left = (Button) mView.findViewById(R.id.btn_left);//登录后左侧按钮
         Button btn_right = (Button) mView.findViewById(R.id.btn_right);//登录后右侧按钮
         RecyclerView recyclerView = (RecyclerView) mView.findViewById(R.id.recyclerView);//底部按钮区域
-        circularImageView = (ImageView) mView.findViewById(R.id.circularImageView);//个人头像
+        ImageView circularImageView = (ImageView) mView.findViewById(R.id.circularImageView);//个人头像
         //btn_left.setVisibility(View.VISIBLE);
         //btn_right.setVisibility(View.VISIBLE);
         setRecyclerView(recyclerView);
         tv_login.setOnClickListener(this);
         tv_register.setOnClickListener(this);
-        Glide.with(this).load(R.drawable.meinv).transform(new GlideCircleImage(getActivity())).placeholder(R.drawable.my).into(circularImageView);
-        scaleAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.scaleanim);//设置动画
-        circularImageView.startAnimation(scaleAnimation);//绑定动画
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        if (circularImageView != null) {
-            if (isVisibleToUser) {
-                circularImageView.startAnimation(scaleAnimation);//绑定动画
-            }
-        }
+        Glide.with(this).load(R.drawable.meinv).into(circularImageView);
     }
 
     private void setRecyclerView(RecyclerView recyclerView) {
@@ -87,7 +72,7 @@ public class FifthFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.tv_login:
             case R.id.tv_register:
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentTransaction ft =getActivity().getSupportFragmentManager().beginTransaction();
                 Fragment prev = getActivity().getSupportFragmentManager().findFragmentByTag("dialog");
                 if (prev != null) {
                     ft.remove(prev);
@@ -95,7 +80,7 @@ public class FifthFragment extends Fragment implements View.OnClickListener {
                 ft.addToBackStack(null);
 
                 // Create and show the dialog.
-                LoginDialogFragment.getNewInstance().show(ft, "dialog");
+                LoginDialogFragment.getNewInstance().show(ft,"dialog");
                 break;
             default:
                 break;

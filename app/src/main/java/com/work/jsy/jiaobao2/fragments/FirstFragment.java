@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,11 +43,10 @@ public class FirstFragment extends Fragment {
     }
 
     private void setRecyclerView(RecyclerView recyclerView) {
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));//设置布局管理器
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));//设置布局管理器
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         HomeRecyclerViewAdapter viewAdapter = new HomeRecyclerViewAdapter(getContext());
         recyclerView.setAdapter(viewAdapter);
-        viewAdapter.notifyDataSetChanged();
     }
 
     @Override
