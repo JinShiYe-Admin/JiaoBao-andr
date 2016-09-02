@@ -243,7 +243,7 @@ public class FriendFragment extends Fragment implements CircleContract.View {
     /**
      * 获取状态栏高度
      *
-     * @return
+     * @return 状态栏高度
      */
     private int getStatusBarHeight() {
         int result = 0;
@@ -369,7 +369,6 @@ public class FriendFragment extends Fragment implements CircleContract.View {
 
     /**
      * 测量偏移量
-     *
      * @param commentConfig
      * @return
      */
@@ -378,7 +377,8 @@ public class FriendFragment extends Fragment implements CircleContract.View {
             return 0;
         //这里如果你的listview上面还有其它占高度的控件，则需要减去该控件高度，listview的headview除外。
         //int listviewOffset = mScreenHeight - mSelectCircleItemH - mCurrentKeyboardH - mEditTextBodyHeight;
-        int listviewOffset = screenHeight - selectCircleItemH - currentKeyboardH - editTextBodyHeight - titleBar.getHeight();
+        int listviewOffset = screenHeight - selectCircleItemH - currentKeyboardH - editTextBodyHeight - titleBar.getHeight()+MainActivity.mBottomHeight;
+        Log.d(TAG,"bottom"+MainActivity.mBottomHeight);
         if (commentConfig.commentType == CommentConfig.Type.REPLY) {
             //回复评论的情况
             listviewOffset = listviewOffset + selectCommentItemOffset;

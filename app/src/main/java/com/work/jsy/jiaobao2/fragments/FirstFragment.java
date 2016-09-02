@@ -47,6 +47,7 @@ public class FirstFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         HomeRecyclerViewAdapter viewAdapter = new HomeRecyclerViewAdapter(getContext());
         recyclerView.setAdapter(viewAdapter);
+        Log.i(TAG,TAG+" recyclerView setAdapter");
     }
 
     @Override
