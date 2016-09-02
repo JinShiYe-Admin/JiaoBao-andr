@@ -2,26 +2,28 @@ package com.work.jsy.jiaobao2.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.util.Log;
-import android.view.Gravity;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.work.jsy.jiaobao2.R;
+import com.work.jsy.jiaobao2.model.Supporter;
+import com.work.jsy.jiaobao2.util.PopupWindowUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ShangLinMo on 2016/8/26.
@@ -30,9 +32,11 @@ public class FriendRecyclerViewAdapter extends RecyclerView.Adapter<FriendRecycl
     private Context mContext;
     private String string = "一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十";
     private ArrayMap<Integer, Integer> mArrayMap;
-    private PopupWindow mPopWindow;
     private FriendRecyclerViewAdapter mAdapter;
     private TextView supportList;
+    private int num = 1;
+    private List supporters = new ArrayList();
+    private ArrayList<Supporter> mAllSupporters = new ArrayList<>();
 
     public void setArrayMap(ArrayMap<Integer, Integer> arrayMap) {
         mArrayMap = arrayMap;
@@ -40,6 +44,10 @@ public class FriendRecyclerViewAdapter extends RecyclerView.Adapter<FriendRecycl
 
     public void setMyAdapter(FriendRecyclerViewAdapter friendRecyclerViewAdapter) {
         mAdapter = friendRecyclerViewAdapter;
+    }
+
+    public void setSupporters(ArrayList<Supporter> supporters) {
+        mAllSupporters = supporters;
     }
 
     public FriendRecyclerViewAdapter(Context context) {
@@ -64,7 +72,10 @@ public class FriendRecyclerViewAdapter extends RecyclerView.Adapter<FriendRecycl
         holder.textView_delete.setOnClickListener(this);
         holder.textView_name.setText(mArrayMap.keyAt(position));
         holder.textView_contnt.setText(string + string);
-        holder.textView_supportList.setTag(mArrayMap.keyAt(position));
+        if (mAllSupporters!=null){
+            holder.textView_supportList.setVisibility(View.VISIBLE);
+            addSupport(holder.textView_supportList, position, mAllSupporters);
+        }
     }
 
     @Override
@@ -99,53 +110,41 @@ public class FriendRecyclerViewAdapter extends RecyclerView.Adapter<FriendRecycl
         }
     }
 
-    private void showPopupWindow(View view) {
-        //设置contentView
-        View contentView = LayoutInflater.from(mContext).inflate(R.layout.item_popup_support_comment, null);
-        mPopWindow = new PopupWindow(contentView,
-                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
-        mPopWindow.setContentView(contentView);
-        // 如果不设置PopupWindow的背景，无论是点击外部区域还是Back键都无法dismiss弹框
-        mPopWindow.setBackgroundDrawable(new BitmapDrawable());
-        //设置各个控件的点击响应
-        TextView tv_support = (TextView) contentView.findViewById(R.id.tv_support);
-        TextView tv_comment = (TextView) contentView.findViewById(R.id.tv_comment);
-        tv_support.setTag(view.getTag());
-        tv_support.setOnClickListener(this);
-        tv_comment.setOnClickListener(this);
-        mPopWindow.setAnimationStyle(R.style.social_pop_anim);//绑定动画效果
-        int[] location = new int[2];
-        view.getLocationOnScreen(location);//获取view x,y坐标
-        //WRAP_CONTENT时，必须通过这种方式才能获取PopWindow的宽度
-        mPopWindow.getContentView().measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        int popWidth = mPopWindow.getContentView().getMeasuredWidth();//获取pop宽度
-        //显示PopupWindow,出现在view左侧
-        mPopWindow.showAtLocation(view, Gravity.NO_GRAVITY, location[0] - popWidth, location[1]);
+
+    private void addSupport(TextView textView, final int position, ArrayList<Supporter> allSupporters) {
+        Supporter supporter = allSupporters.get(position);
+        List mSupporters = supporter.getAllSupporters();
+//        if (mSupporters.size() == 0) {
+//            string = String.valueOf(" 第" + (mSupporters.size() + 1) + "位");
+//        } else {
+//            string = String.valueOf(",第" + (mSupporters.size() + 1) + "位");
+//        }
+//        supporters.add(string);
+        for (int i = 0; i < mSupporters.size(); i++) {
+            String string = String.valueOf(mSupporters.get(i));
+            final SpannableString spanString = new SpannableString(string);
+            spanString.setSpan(new ClickableSpan() {
+                @Override
+                public void updateDrawState(TextPaint ds) {
+                    ds.setColor(Color.BLUE);
+                }
+
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(mContext,spanString + "-"+position,Toast.LENGTH_SHORT).show();
+                }
+            }, 0, spanString.length()-1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            textView.setMovementMethod(LinkMovementMethod.getInstance());
+            textView.append(spanString);
+        }
     }
 
-    private void addSurpport(TextView textView) {
-        SpannableString spanString = new SpannableString("颜色1");
-        ForegroundColorSpan span = new ForegroundColorSpan(Color.BLUE);
-        spanString.setSpan(span, 0, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        textView.append(spanString);
-        mAdapter.getItemId(position);
-    }
-
-    int position;
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_supportList:
-                addSurpport((TextView) view);
-                break;
-            case R.id.tv_support:
-                position = (int) view.getTag();
-                Log.i("position", position + "");
-                break;
-            case R.id.tv_comment:
-                Toast.makeText(mContext, ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-                mPopWindow.dismiss();
+                //addSupport((TextView) view);
                 break;
             case R.id.tv_delete:
                 mArrayMap.remove(view.getTag());
@@ -153,7 +152,7 @@ public class FriendRecyclerViewAdapter extends RecyclerView.Adapter<FriendRecycl
                 mAdapter.notifyDataSetChanged();
                 break;
             case R.id.imageView_popup:
-                showPopupWindow(view);
+                PopupWindowUtil.showPopupWindow(mContext, view);
                 Toast.makeText(mContext, view.getTag() + "", Toast.LENGTH_SHORT).show();
                 break;
             default:

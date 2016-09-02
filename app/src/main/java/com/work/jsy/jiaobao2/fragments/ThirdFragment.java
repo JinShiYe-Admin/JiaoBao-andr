@@ -14,7 +14,11 @@ import android.view.ViewGroup;
 
 import com.work.jsy.jiaobao2.R;
 import com.work.jsy.jiaobao2.adapters.FriendRecyclerViewAdapter;
+import com.work.jsy.jiaobao2.model.Supporter;
 import com.work.jsy.jiaobao2.util.DividerItemDecoration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by admin on 2016/8/3.
@@ -26,6 +30,9 @@ public class ThirdFragment extends Fragment {
     private Context mContext;
     private RecyclerView recyclerView;
     private FriendRecyclerViewAdapter viewAdapter;
+    private Supporter supporter;
+    private List allSupporters = new ArrayList();
+    private ArrayList<Supporter> mAllSupporters = new ArrayList<>();
 
     @Nullable
     @Override
@@ -41,8 +48,8 @@ public class ThirdFragment extends Fragment {
     }
 
     private void findViews() {
-        mContext=getContext();
-        recyclerView=(RecyclerView)mView.findViewById(R.id.recyclerView);
+        mContext = getContext();
+        recyclerView = (RecyclerView) mView.findViewById(R.id.recyclerView);
         setRecyclerView(recyclerView);
     }
 
@@ -53,8 +60,27 @@ public class ThirdFragment extends Fragment {
         viewAdapter = new FriendRecyclerViewAdapter(getContext());
         recyclerView.setAdapter(viewAdapter);
         viewAdapter.setMyAdapter(viewAdapter);
+        supporter = new Supporter();
         initAdapterData(viewAdapter);
     }
+
+    private void intSupporterData(FriendRecyclerViewAdapter viewAdapter) {
+        int random = (int) (1 + Math.random() * (10 - 0 + 1));
+        for (int i = 0; i <= random; i++) {
+            supporter.setNumber(i);
+            if (i == random || random == 0) {
+                allSupporters.add("第" + i + "位");
+            } else {
+                allSupporters.add("第" + i + "位,");
+            }
+            supporter.setAllSupporters(allSupporters);
+        }
+        for (int i = 0; i <= arrayMap.size(); i++) {
+            mAllSupporters.add(supporter);
+        }
+        viewAdapter.setSupporters(mAllSupporters);
+    }
+
     /**
      * RecyclerView的adapter加载数据
      */
@@ -67,6 +93,7 @@ public class ThirdFragment extends Fragment {
         arrayMap.put(R.string.France, R.drawable.ic_france_48px);
         arrayMap.put(R.string.Japan, R.drawable.ic_japan_48px);
         viewAdapter.setArrayMap(arrayMap);
+        intSupporterData(viewAdapter);
         viewAdapter.notifyDataSetChanged();
     }
 }
