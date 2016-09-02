@@ -72,7 +72,7 @@ public class FriendRecyclerViewAdapter extends RecyclerView.Adapter<FriendRecycl
         holder.textView_delete.setOnClickListener(this);
         holder.textView_name.setText(mArrayMap.keyAt(position));
         holder.textView_contnt.setText(string + string);
-        if (mAllSupporters!=null){
+        if (mAllSupporters != null) {
             holder.textView_supportList.setVisibility(View.VISIBLE);
             addSupport(holder.textView_supportList, position, mAllSupporters);
         }
@@ -131,9 +131,9 @@ public class FriendRecyclerViewAdapter extends RecyclerView.Adapter<FriendRecycl
 
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(mContext,spanString + "-"+position,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, spanString + "-" + position, Toast.LENGTH_SHORT).show();
                 }
-            }, 0, spanString.length()-1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }, 0, spanString.length() - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             textView.setMovementMethod(LinkMovementMethod.getInstance());
             textView.append(spanString);
         }
