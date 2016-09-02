@@ -329,10 +329,11 @@ public class FriendFragment extends Fragment implements CircleContract.View {
             editText.requestFocus();
             //弹出键盘
             CommonUtils.showSoftInput(editText.getContext(), editText);
-
+            MainActivity.rg_bottom.setVisibility(View.GONE);
         } else if (View.GONE == visibility) {
             //隐藏键盘
             CommonUtils.hideSoftInput(editText.getContext(), editText);
+            MainActivity.rg_bottom.setVisibility(View.VISIBLE);
         }
     }
 

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity
     private RadioButton tv_first, tv_sec, tv_third, tv_fourth, tv_fifth;
     private ViewPager mViewPager;
     public static int mBottomHeight;
-    private RadioGroup rg_bottom;
+    public static RadioGroup rg_bottom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
