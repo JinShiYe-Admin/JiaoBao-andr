@@ -75,7 +75,7 @@ public class SecondRecyclerViewAdapter extends RecyclerView.Adapter<SecondRecycl
 
     private void initAdapterData(ThirdRecyclerViewAdapter viewAdapter) {
         ArrayMap<Integer, Integer> arrayMap = new ArrayMap<>();
-        int i=(int)(1+Math.random()*(10-1+1));
+        int i=(int)(1+Math.random()*10);
         arrayMap.put(R.string.first, i);
         viewAdapter.setArrayMap(arrayMap);
         viewAdapter.notifyDataSetChanged();

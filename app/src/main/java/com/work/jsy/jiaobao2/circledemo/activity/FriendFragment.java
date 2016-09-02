@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.malinskiy.superrecyclerview.OnMoreListener;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
+import com.work.jsy.jiaobao2.MainActivity;
 import com.work.jsy.jiaobao2.R;
 import com.work.jsy.jiaobao2.circledemo.adapter.CircleAdapter;
 import com.work.jsy.jiaobao2.circledemo.bean.CircleItem;
@@ -90,11 +91,11 @@ public class FriendFragment extends Fragment implements CircleContract.View {
     }
 
     @Override
-    public void onDestroy() {
+    public void onDetach() {
         if (presenter != null) {
             presenter.recycle();
         }
-        super.onDestroy();
+        super.onDetach();
     }
 
     @SuppressLint({"ClickableViewAccessibility", "InlinedApi"})
@@ -136,13 +137,15 @@ public class FriendFragment extends Fragment implements CircleContract.View {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                Glide.with(FriendFragment.this).resumeRequests();
+//
             }
 
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (newState != RecyclerView.SCROLL_STATE_IDLE) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    Glide.with(FriendFragment.this).resumeRequests();
+                }else{
                     Glide.with(FriendFragment.this).pauseRequests();
                 }
 
@@ -150,7 +153,7 @@ public class FriendFragment extends Fragment implements CircleContract.View {
         });
 
 
-        circleAdapter = new CircleAdapter(getContext());
+        circleAdapter = new CircleAdapter(getActivity());
         circleAdapter.setCirclePresenter(presenter);
         recyclerView.setAdapter(circleAdapter);
 
@@ -173,7 +176,7 @@ public class FriendFragment extends Fragment implements CircleContract.View {
             }
         });
 
-        setViewTreeObserver();
+//        setViewTreeObserver();
     }
 
     private void initUploadDialog() {
@@ -410,7 +413,8 @@ public class FriendFragment extends Fragment implements CircleContract.View {
                         int subItemBottom = parentView.getBottom();
                         parentView = (View) parentView.getParent();
                         if (parentView != null) {
-                            selectCommentItemOffset += (parentView.getHeight() - subItemBottom);
+                            selectCommentItemOffset += (parentView.getHeight() - subItemBottom- MainActivity.mBottomHeight);
+                            Log.d(TAG+"bottom",MainActivity.mBottomHeight+"");
                         }
                     } while (parentView != null && parentView != selectCircleItem);
                 }
@@ -419,8 +423,8 @@ public class FriendFragment extends Fragment implements CircleContract.View {
     }
 
 
-    String videoFile;
-    String[] thum;
+//    String videoFile;
+//    String[] thum;
 //	@Override
 //	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 //
