@@ -68,12 +68,11 @@ public class ThirdFragment extends Fragment {
         int random = (int) (1 + Math.random() * (10 - 0 + 1));
         for (int i = 0; i <= random; i++) {
             supporter.setNumber(i);
-            if (i == random || random == 0) {
-                allSupporters.add("第" + i + "位");
-            } else {
-                allSupporters.add("第" + i + "位,");
+            int random2 = (int) (1 + Math.random() * (10 - 1 + 1));
+            for (int j = 0; j <= random2; j++) {
+                allSupporters.add("第" + j + "位");
+                supporter.setAllSupporters(allSupporters);
             }
-            supporter.setAllSupporters(allSupporters);
         }
         for (int i = 0; i <= arrayMap.size(); i++) {
             mAllSupporters.add(supporter);

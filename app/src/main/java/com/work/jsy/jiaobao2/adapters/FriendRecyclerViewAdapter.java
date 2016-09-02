@@ -106,7 +106,7 @@ public class FriendRecyclerViewAdapter extends RecyclerView.Adapter<FriendRecycl
             textView_delete = (TextView) itemView.findViewById(R.id.tv_delete);
             imageView_popup = (ImageView) itemView.findViewById(R.id.imageView_popup);
             textView_supportList = (TextView) itemView.findViewById(R.id.tv_supportList);
-            recyclerView_comments = (RecyclerView) itemView.findViewById(R.id.recyclerView_comments);
+            //recyclerView_comments = (RecyclerView) itemView.findViewById(R.id.recyclerView_comments);
         }
     }
 
